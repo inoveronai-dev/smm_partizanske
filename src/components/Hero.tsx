@@ -64,16 +64,6 @@ export function Hero({ revealed = true }: HeroProps) {
           }}
           aria-hidden
         />
-
-        <p
-          className={`mt-6 max-w-xl font-sans text-sm leading-relaxed tracking-wide text-cream/75 sm:mt-7 sm:text-base ${
-            revealed ? "animate-hero-rise" : "opacity-0"
-          }`}
-          style={{ animationDelay: revealed ? "0.65s" : undefined }}
-        >
-          Profesionálna správa mestského majetku — od bývania a nebytových
-          priestorov po spoľahlivú údržbu a transparentné zverejňovanie.
-        </p>
       </div>
     </section>
   );

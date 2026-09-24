@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { NAV_ITEMS, SUPPLIERS_CTA, type NavItem } from "@/lib/navigation";
+import { NAV_ITEMS, type NavItem } from "@/lib/navigation";
 
 type HeaderProps = {
   revealed?: boolean;
@@ -28,7 +28,7 @@ function Chevron({ open }: { open?: boolean }) {
   );
 }
 
-function DesktopDropdown({ item }: { item: NavItem }) {
+function DesktopItem({ item }: { item: NavItem }) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const panelId = useId();
@@ -99,7 +99,7 @@ function DesktopDropdown({ item }: { item: NavItem }) {
       >
         {item.children.map((child) => (
           <a
-            key={child.href}
+            key={child.href + child.label}
             href={child.href}
             role="menuitem"
             className="block px-4 py-2.5 font-sans text-[0.72rem] tracking-wide text-cream/75 transition-colors hover:bg-cream/[0.04] hover:text-amber"
@@ -113,7 +113,7 @@ function DesktopDropdown({ item }: { item: NavItem }) {
   );
 }
 
-function MobileNavGroup({
+function MobileItem({
   item,
   onNavigate,
 }: {
@@ -156,7 +156,7 @@ function MobileNavGroup({
         <div className="flex flex-col gap-1 pb-3 pl-1">
           {item.children.map((child) => (
             <a
-              key={child.href}
+              key={child.href + child.label}
               href={child.href}
               className="py-2 font-sans text-sm tracking-wide text-cream/65 transition-colors hover:text-amber"
               onClick={onNavigate}
@@ -186,7 +186,7 @@ export function Header({ revealed = true }: HeaderProps) {
         revealed ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[90rem] items-center gap-4 px-5 sm:h-[4.25rem] sm:px-8 lg:px-10">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 sm:h-[4.25rem] sm:px-8 lg:px-10">
         <a
           href="#top"
           className="flex shrink-0 items-baseline gap-2.5 text-cream transition-opacity hover:opacity-90"
@@ -201,24 +201,17 @@ export function Header({ revealed = true }: HeaderProps) {
         </a>
 
         <nav
-          className="ml-auto hidden items-center gap-6 xl:flex xl:gap-7"
+          className="ml-auto hidden items-center gap-7 lg:flex"
           aria-label="Hlavná navigácia"
         >
           {NAV_ITEMS.map((item) => (
-            <DesktopDropdown key={item.label} item={item} />
+            <DesktopItem key={item.label} item={item} />
           ))}
         </nav>
 
-        <a
-          href={SUPPLIERS_CTA.href}
-          className="ml-auto hidden items-center border border-amber px-4 py-2 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-amber transition-colors hover:bg-amber hover:text-anthracite xl:ml-6 xl:inline-flex"
-        >
-          {SUPPLIERS_CTA.label}
-        </a>
-
         <button
           type="button"
-          className="relative ml-auto flex h-10 w-10 items-center justify-center text-cream xl:hidden"
+          className="relative ml-auto flex h-10 w-10 items-center justify-center text-cream lg:hidden"
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-label={menuOpen ? "Zavrieť menu" : "Otvoriť menu"}
@@ -245,7 +238,7 @@ export function Header({ revealed = true }: HeaderProps) {
 
       <div
         id="mobile-menu"
-        className={`max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-cream/10 bg-anthracite xl:hidden ${
+        className={`max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-cream/10 bg-anthracite lg:hidden ${
           menuOpen ? "block" : "hidden"
         }`}
       >
@@ -254,19 +247,12 @@ export function Header({ revealed = true }: HeaderProps) {
           aria-label="Mobilná navigácia"
         >
           {NAV_ITEMS.map((item) => (
-            <MobileNavGroup
+            <MobileItem
               key={item.label}
               item={item}
               onNavigate={() => setMenuOpen(false)}
             />
           ))}
-          <a
-            href={SUPPLIERS_CTA.href}
-            className="mt-4 inline-flex items-center justify-center border border-amber px-4 py-3 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber transition-colors hover:bg-amber hover:text-anthracite"
-            onClick={() => setMenuOpen(false)}
-          >
-            {SUPPLIERS_CTA.label}
-          </a>
         </nav>
       </div>
     </header>

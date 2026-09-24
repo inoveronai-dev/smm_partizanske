@@ -1,7 +1,9 @@
+export type NavChild = { label: string; href: string };
+
 export type NavItem = {
   label: string;
   href?: string;
-  children?: { label: string; href: string }[];
+  children?: NavChild[];
 };
 
 export const NAV_ITEMS: NavItem[] = [
@@ -38,14 +40,8 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Legislatíva", href: "#legislativa" },
     ],
   },
-  { label: "Fotogaléria", href: "#fotogaleria" },
-  { label: "Oznámenia", href: "#oznamenia" },
+  { label: "Kontakty", href: "#kontakty" },
 ];
-
-export const SUPPLIERS_CTA = {
-  label: "Dodávatelia",
-  href: "#dodavatelia",
-} as const;
 
 export const SECTION_ANCHORS = [
   "o-organizacii",
@@ -61,8 +57,6 @@ export const SECTION_ANCHORS = [
   "vyrocne-spravy",
   "vyberove-konania",
   "legislativa",
-  "fotogaleria",
   "oznamenia",
-  "dodavatelia",
   "volne-priestory",
 ] as const;

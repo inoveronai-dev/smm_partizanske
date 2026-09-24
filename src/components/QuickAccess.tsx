@@ -10,7 +10,7 @@ type QuickLink = {
 const QUICK_LINKS: QuickLink[] = [
   {
     href: "#zmluvy",
-    title: "Zmluvy a Faktúry",
+    title: "Zmluvy a faktúry",
     description: "Rýchle vyhľadávanie",
     icon: "contracts",
   },
@@ -28,8 +28,8 @@ const QUICK_LINKS: QuickLink[] = [
   },
   {
     href: "#oznamenia",
-    title: "Aktuálne Oznámenia & OVS",
-    description: "Novinky a výzvy",
+    title: "Oznámenia",
+    description: "Aktuálne novinky",
     icon: "notices",
   },
 ];
@@ -135,7 +135,7 @@ export function QuickAccess({ revealed = true }: QuickAccessProps) {
             href={link.href}
             className="group flex items-start gap-4 border border-cream/10 bg-anthracite/95 p-5 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.85)] backdrop-blur-sm transition-[border-color,transform,background-color] duration-300 hover:-translate-y-1 hover:border-amber/50 hover:bg-anthracite sm:p-6"
           >
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-cream/15 text-amber transition-colors group-hover:border-amber/60 group-hover:text-amber">
+            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-cream/15 text-amber transition-colors group-hover:border-amber/60">
               <QuickIcon name={link.icon} />
             </span>
             <span className="min-w-0">
