@@ -3,7 +3,9 @@
 import { useCallback, useState } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { QuickAccess } from "@/components/QuickAccess";
 import { SplashScreen } from "@/components/SplashScreen";
+import { SECTION_ANCHORS } from "@/lib/navigation";
 
 export function HomeExperience() {
   const [splashDone, setSplashDone] = useState(false);
@@ -16,14 +18,14 @@ export function HomeExperience() {
     <>
       <SplashScreen onComplete={handleSplashComplete} />
       <Header revealed={splashDone} />
-      <main>
+      <main className="pb-24">
         <Hero revealed={splashDone} />
-        {/* Anchor targets for navigation — content sections follow in later iterations */}
-        <div id="o-nas" className="h-px scroll-mt-24" aria-hidden />
-        <div id="sluzby" className="h-px scroll-mt-24" aria-hidden />
-        <div id="volne-priestory" className="h-px scroll-mt-24" aria-hidden />
-        <div id="oznamenia" className="h-px scroll-mt-24" aria-hidden />
-        <div id="kontakt" className="h-px scroll-mt-24" aria-hidden />
+        <QuickAccess revealed={splashDone} />
+        <div className="sr-only" aria-hidden>
+          {SECTION_ANCHORS.map((id) => (
+            <div key={id} id={id} className="scroll-mt-24" />
+          ))}
+        </div>
       </main>
     </>
   );

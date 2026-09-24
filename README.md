@@ -20,5 +20,6 @@ Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 ## What’s included
 
 - Full-screen splash with SMM monogram (fades after ~1.5s)
-- Sticky glassmorphic header with navigation
+- Sticky anthracite header with dropdown navigation and Dodávatelia CTA
 - Full-bleed dusk cityscape hero with editorial typography
+- Overlapping Quick Access utility bar for frequent citizen tasks
