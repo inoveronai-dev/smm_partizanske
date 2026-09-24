@@ -21,11 +21,9 @@ export function HomeExperience() {
       <main className="pb-24">
         <Hero revealed={splashDone} />
         <QuickAccess revealed={splashDone} />
-        <div className="sr-only" aria-hidden>
-          {SECTION_ANCHORS.map((id) => (
-            <div key={id} id={id} className="scroll-mt-24" />
-          ))}
-        </div>
+        {SECTION_ANCHORS.map((id) => (
+          <div key={id} id={id} className="h-0 scroll-mt-24" aria-hidden />
+        ))}
       </main>
     </>
   );
