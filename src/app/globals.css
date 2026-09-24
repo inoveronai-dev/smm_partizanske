@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --anthracite: #111111;
+  --cream: #f9f9f6;
+  --amber: #f59e0b;
+  --background: var(--anthracite);
+  --foreground: var(--cream);
+}
+
+@theme inline {
+  --color-anthracite: var(--anthracite);
+  --color-cream: var(--cream);
+  --color-amber: var(--amber);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--amber) 35%, transparent);
+  color: var(--cream);
+}
+
+@keyframes splash-mark-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes splash-line-in {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes splash-exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes divider-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-splash-mark {
+  animation: splash-mark-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-splash-line {
+  animation: splash-line-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+  transform: scaleX(0);
+}
+
+.animate-splash-exit {
+  animation: splash-exit 0.65s ease-in-out forwards;
+  pointer-events: none;
+}
+
+.animate-hero-rise {
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.animate-scroll-pulse {
+  animation: scroll-pulse 1.8s ease-in-out infinite;
+}
+
+.animate-divider-draw {
+  animation: divider-draw 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-splash-mark,
+  .animate-splash-line,
+  .animate-splash-exit,
+  .animate-hero-rise,
+  .animate-scroll-pulse,
+  .animate-divider-draw {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
