@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { NoticesSection } from "@/components/NoticesSection";
+import { ObjectsSection } from "@/components/ObjectsSection";
 import { QuickAccess } from "@/components/QuickAccess";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SplashScreen } from "@/components/SplashScreen";
@@ -25,6 +26,7 @@ export function HomeExperience() {
         <Hero revealed={splashDone} />
         <QuickAccess revealed={splashDone} />
         <AboutSection />
+        <ObjectsSection />
         <NoticesSection />
         <SiteFooter />
         {SECTION_ANCHORS.filter(
@@ -34,6 +36,7 @@ export function HomeExperience() {
               "oznamenia",
               "aktualne-ovs",
               "kontakty",
+              "objekty-smm",
             ].includes(id),
         ).map((id) => (
           <div key={id} id={id} className="h-0 scroll-mt-24" aria-hidden />

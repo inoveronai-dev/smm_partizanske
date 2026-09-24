@@ -18,6 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Spravujeme",
+    href: "#objekty-smm",
     children: [
       { label: "Objekty SMM", href: "#objekty-smm" },
       { label: "Prenájom priestorov", href: "#prenajom-priestorov" },
