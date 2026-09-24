@@ -23,17 +23,17 @@ export function SiteFooter() {
   return (
     <footer
       id="kontakty"
-      className="scroll-mt-24 border-t border-cream/10 bg-anthracite"
+      className="scroll-mt-24 border-t border-line bg-paper"
       aria-labelledby="kontakty-heading"
     >
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
         <div className="mb-14 max-w-2xl">
-          <p className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.35em] text-royal">
+          <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-royal">
             Kontakt & stránkové dni
           </p>
           <h2
             id="kontakty-heading"
-            className="mt-4 font-serif text-3xl font-medium tracking-wide text-cream sm:text-4xl md:text-5xl"
+            className="mt-4 font-serif text-3xl font-medium tracking-wide text-ink sm:text-4xl md:text-5xl"
           >
             Sme tu pre vás
           </h2>
@@ -43,24 +43,24 @@ export function SiteFooter() {
           {OFFICE_HOURS.map((block) => (
             <div
               key={block.title}
-              className="border border-cream/10 bg-[#141414] p-6 sm:p-8"
+              className="border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8"
             >
-              <p className="font-sans text-[0.62rem] font-medium uppercase tracking-[0.28em] text-amber">
+              <p className="font-sans text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-royal">
                 {block.note}
               </p>
-              <h3 className="mt-3 font-serif text-2xl text-cream sm:text-[1.75rem]">
+              <h3 className="mt-3 font-serif text-2xl text-ink sm:text-[1.75rem]">
                 {block.title}
               </h3>
               <ul className="mt-6 space-y-4">
                 {block.rows.map((row) => (
                   <li
                     key={row.day}
-                    className="flex flex-col gap-1 border-t border-cream/10 pt-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                    className="flex flex-col gap-1 border-t border-line pt-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                   >
-                    <span className="font-sans text-sm font-medium uppercase tracking-[0.16em] text-cream/70">
+                    <span className="font-sans text-sm font-medium uppercase tracking-[0.16em] text-muted">
                       {row.day}
                     </span>
-                    <span className="font-sans text-sm text-cream/85 sm:text-right">
+                    <span className="font-sans text-sm text-ink sm:text-right">
                       {row.hours}
                     </span>
                   </li>
@@ -70,12 +70,12 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-14 grid gap-10 border-t border-cream/10 pt-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+        <div className="mt-14 grid gap-10 border-t border-line pt-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div>
-            <p className="font-serif text-2xl text-cream sm:text-3xl">
+            <p className="font-serif text-2xl text-ink sm:text-3xl">
               Správa majetku mesta, n.o., Partizánske
             </p>
-            <div className="mt-6 space-y-2 font-sans text-sm leading-relaxed text-cream/65 sm:text-base">
+            <div className="mt-6 space-y-2 font-sans text-sm leading-relaxed text-muted sm:text-base">
               <p>
                 <a
                   href="mailto:sekretariat@smmpartizanske.sk"
@@ -83,7 +83,7 @@ export function SiteFooter() {
                 >
                   sekretariat@smmpartizanske.sk
                 </a>
-                <span className="mx-2 text-cream/25">|</span>
+                <span className="mx-2 text-line">|</span>
                 <a
                   href="tel:+421382851711"
                   className="transition-colors hover:text-royal"
@@ -93,9 +93,9 @@ export function SiteFooter() {
               </p>
               <p>
                 IČO: 379 23 145
-                <span className="mx-2 text-cream/25">|</span>
+                <span className="mx-2 text-line">|</span>
                 DIČ: 2022092963
-                <span className="mx-2 text-cream/25">|</span>
+                <span className="mx-2 text-line">|</span>
                 IČ DPH: SK2022092963
               </p>
             </div>
@@ -104,13 +104,13 @@ export function SiteFooter() {
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-end lg:flex-col xl:flex-row">
             <a
               href="mailto:sekretariat@smmpartizanske.sk?subject=Spr%C3%A1va%20pre%20riadite%C4%BEa"
-              className="inline-flex items-center justify-center border border-amber bg-transparent px-5 py-3.5 text-center font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-amber transition-colors hover:bg-amber hover:text-anthracite"
+              className="inline-flex items-center justify-center bg-royal px-5 py-3.5 text-center font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-surface transition-colors hover:bg-ink"
             >
               Napíšte riaditeľovi
             </a>
             <a
               href="#top"
-              className="inline-flex items-center justify-center border border-royal/60 bg-royal/15 px-5 py-3.5 text-center font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#93c5fd] transition-colors hover:border-royal hover:bg-royal hover:text-cream"
+              className="inline-flex items-center justify-center border border-line bg-surface px-5 py-3.5 text-center font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:border-royal hover:text-royal"
             >
               Návrat hore
             </a>
@@ -118,12 +118,12 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="overflow-hidden border-t border-cream/10">
+      <div className="overflow-hidden border-t border-line bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 lg:px-10">
-          <p className="select-none font-serif text-[clamp(1.4rem,5.5vw,4.25rem)] leading-none tracking-[0.04em] text-cream/[0.07]">
+          <p className="select-none font-serif text-[clamp(1.4rem,5.5vw,4.25rem)] leading-none tracking-[0.04em] text-ink/[0.06]">
             Správa majetku mesta, n.o., Partizánske
           </p>
-          <p className="mt-5 font-sans text-[0.65rem] uppercase tracking-[0.28em] text-cream/35">
+          <p className="mt-5 font-sans text-[0.65rem] uppercase tracking-[0.28em] text-muted">
             © 2025 / 2026
           </p>
         </div>

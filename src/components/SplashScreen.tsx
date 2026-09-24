@@ -37,23 +37,21 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-anthracite ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-paper ${
         exiting ? "animate-splash-exit" : ""
       }`}
       aria-hidden={exiting}
       role="presentation"
     >
       <div className="flex flex-col items-center px-6 text-center">
-        <p className="animate-splash-mark font-serif text-5xl font-medium tracking-[0.28em] text-cream sm:text-6xl md:text-7xl">
+        <p className="animate-splash-mark font-serif text-5xl font-medium tracking-[0.28em] text-ink sm:text-6xl md:text-7xl">
           SMM
         </p>
         <span
-          className="animate-splash-line mt-5 h-px w-16 origin-center bg-amber"
+          className="animate-splash-line mt-5 h-px w-16 origin-center bg-royal"
           aria-hidden
         />
-        <p
-          className="animate-splash-mark mt-5 max-w-xs font-sans text-[0.65rem] font-medium uppercase tracking-[0.32em] text-cream/70 sm:text-xs [animation-delay:150ms] [animation-fill-mode:both]"
-        >
+        <p className="animate-splash-mark mt-5 max-w-xs font-sans text-[0.65rem] font-medium uppercase tracking-[0.32em] text-muted sm:text-xs [animation-delay:150ms] [animation-fill-mode:both]">
           Správa majetku mesta
           <span className="mt-1.5 block tracking-[0.28em]">
             n.o., Partizánske

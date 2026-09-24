@@ -51,7 +51,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     return (
       <a
         href={item.href}
-        className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.2em] text-cream/80 transition-colors hover:text-amber"
+        className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink/75 transition-colors hover:text-royal"
       >
         {item.label}
       </a>
@@ -78,7 +78,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     >
       <button
         type="button"
-        className="inline-flex items-center gap-1.5 font-sans text-[0.68rem] font-medium uppercase tracking-[0.2em] text-cream/80 transition-colors hover:text-amber"
+        className="inline-flex items-center gap-1.5 font-sans text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink/75 transition-colors hover:text-royal"
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={panelId}
@@ -91,7 +91,7 @@ function DesktopItem({ item }: { item: NavItem }) {
       <div
         id={panelId}
         role="menu"
-        className={`absolute left-1/2 top-full z-50 mt-3 min-w-[14rem] -translate-x-1/2 border border-cream/10 bg-anthracite py-2 shadow-2xl shadow-black/40 transition-[opacity,transform] duration-200 ${
+        className={`absolute left-1/2 top-full z-50 mt-3 min-w-[14rem] -translate-x-1/2 border border-line bg-surface py-2 shadow-lg shadow-ink/10 transition-[opacity,transform] duration-200 ${
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0"
@@ -102,7 +102,7 @@ function DesktopItem({ item }: { item: NavItem }) {
             key={child.href + child.label}
             href={child.href}
             role="menuitem"
-            className="block px-4 py-2.5 font-sans text-[0.72rem] tracking-wide text-cream/75 transition-colors hover:bg-cream/[0.04] hover:text-amber"
+            className="block px-4 py-2.5 font-sans text-[0.72rem] tracking-wide text-ink/70 transition-colors hover:bg-royal-soft hover:text-royal"
             onClick={() => setOpen(false)}
           >
             {child.label}
@@ -127,7 +127,7 @@ function MobileItem({
     return (
       <a
         href={item.href}
-        className="py-3 font-sans text-sm font-medium uppercase tracking-[0.2em] text-cream/85 transition-colors hover:text-amber"
+        className="py-3 font-sans text-sm font-medium uppercase tracking-[0.2em] text-ink/80 transition-colors hover:text-royal"
         onClick={onNavigate}
       >
         {item.label}
@@ -136,10 +136,10 @@ function MobileItem({
   }
 
   return (
-    <div className="border-b border-cream/10 last:border-b-0">
+    <div className="border-b border-line last:border-b-0">
       <button
         type="button"
-        className="flex w-full items-center justify-between py-3 font-sans text-sm font-medium uppercase tracking-[0.2em] text-cream/85"
+        className="flex w-full items-center justify-between py-3 font-sans text-sm font-medium uppercase tracking-[0.2em] text-ink/80"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
@@ -158,7 +158,7 @@ function MobileItem({
             <a
               key={child.href + child.label}
               href={child.href}
-              className="py-2 font-sans text-sm tracking-wide text-cream/65 transition-colors hover:text-amber"
+              className="py-2 font-sans text-sm tracking-wide text-muted transition-colors hover:text-royal"
               onClick={onNavigate}
             >
               {child.label}
@@ -182,20 +182,20 @@ export function Header({ revealed = true }: HeaderProps) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-cream/10 bg-anthracite transition-[opacity,transform] duration-700 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-surface/95 backdrop-blur-md transition-[opacity,transform] duration-700 ${
         revealed ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 sm:h-[4.25rem] sm:px-8 lg:px-10">
         <a
           href="#top"
-          className="flex shrink-0 items-baseline gap-2.5 text-cream transition-opacity hover:opacity-90"
+          className="flex shrink-0 items-baseline gap-2.5 text-ink transition-colors hover:text-royal"
           aria-label="SMM Partizánske — domov"
         >
           <span className="font-serif text-xl font-medium tracking-[0.12em] sm:text-2xl">
             SMM
           </span>
-          <span className="font-sans text-[0.62rem] font-medium uppercase tracking-[0.26em] text-cream/65 sm:text-[0.65rem]">
+          <span className="font-sans text-[0.62rem] font-medium uppercase tracking-[0.26em] text-muted sm:text-[0.65rem]">
             Partizánske
           </span>
         </a>
@@ -211,7 +211,7 @@ export function Header({ revealed = true }: HeaderProps) {
 
         <button
           type="button"
-          className="relative ml-auto flex h-10 w-10 items-center justify-center text-cream lg:hidden"
+          className="relative ml-auto flex h-10 w-10 items-center justify-center text-ink lg:hidden"
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-label={menuOpen ? "Zavrieť menu" : "Otvoriť menu"}
@@ -238,7 +238,7 @@ export function Header({ revealed = true }: HeaderProps) {
 
       <div
         id="mobile-menu"
-        className={`max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-cream/10 bg-anthracite lg:hidden ${
+        className={`max-h-[calc(100svh-4.25rem)] overflow-y-auto border-t border-line bg-surface lg:hidden ${
           menuOpen ? "block" : "hidden"
         }`}
       >

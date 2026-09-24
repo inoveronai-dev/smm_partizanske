@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="sk"
       className={`${outfit.variable} ${cormorant.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-anthracite font-sans text-cream antialiased">
+      <body className="min-h-full bg-paper font-sans text-ink antialiased">
         {children}
       </body>
     </html>

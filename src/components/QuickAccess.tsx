@@ -133,16 +133,16 @@ export function QuickAccess({ revealed = true }: QuickAccessProps) {
           <a
             key={link.href + link.title}
             href={link.href}
-            className="group flex items-start gap-4 border border-cream/10 bg-anthracite/95 p-5 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.85)] backdrop-blur-sm transition-[border-color,transform,background-color] duration-300 hover:-translate-y-1 hover:border-amber/50 hover:bg-anthracite sm:p-6"
+            className="group flex items-start gap-4 border border-line bg-surface p-5 shadow-sm shadow-ink/5 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-royal/40 hover:shadow-md hover:shadow-royal/10 sm:p-6"
           >
-            <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-cream/15 text-amber transition-colors group-hover:border-amber/60">
+            <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center border border-royal/20 bg-royal-soft text-royal transition-colors group-hover:border-royal group-hover:bg-royal group-hover:text-surface">
               <QuickIcon name={link.icon} />
             </span>
             <span className="min-w-0">
-              <span className="block font-serif text-lg leading-snug tracking-wide text-cream sm:text-xl">
+              <span className="block font-serif text-lg leading-snug tracking-wide text-ink sm:text-xl">
                 {link.title}
               </span>
-              <span className="mt-1.5 block font-sans text-[0.7rem] uppercase tracking-[0.18em] text-cream/50 transition-colors group-hover:text-amber/80">
+              <span className="mt-1.5 block font-sans text-[0.7rem] uppercase tracking-[0.18em] text-muted transition-colors group-hover:text-royal">
                 {link.description}
               </span>
             </span>

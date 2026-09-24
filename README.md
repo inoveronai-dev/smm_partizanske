@@ -1,6 +1,6 @@
 # SMM Partizánske
 
-Editorial landing page for **Správa majetku mesta, n.o., Partizánske** — splash intro and cinematic hero for a high-end property-management presence.
+Editorial public website for **Správa majetku mesta, n.o., Partizánske** — clean light design for high readability.
 
 ## Stack
 
@@ -17,9 +17,8 @@ npm run dev -- --port 43123
 
 Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 
-## What’s included
+## Design
 
-- Full-screen splash with SMM monogram (fades after ~1.5s)
-- Sticky anthracite header with dropdown navigation and Dodávatelia CTA
-- Full-bleed dusk cityscape hero with editorial typography
-- Overlapping Quick Access utility bar for frequent citizen tasks
+- Light cream paper background with anthracite text
+- Royal blue primary accent (logo identity)
+- Soft amber used sparingly for secondary labels
