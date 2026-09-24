@@ -1,9 +1,12 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { AboutSection } from "@/components/AboutSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { NoticesSection } from "@/components/NoticesSection";
 import { QuickAccess } from "@/components/QuickAccess";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SplashScreen } from "@/components/SplashScreen";
 import { SECTION_ANCHORS } from "@/lib/navigation";
 
@@ -18,10 +21,21 @@ export function HomeExperience() {
     <>
       <SplashScreen onComplete={handleSplashComplete} />
       <Header revealed={splashDone} />
-      <main className="pb-24">
+      <main>
         <Hero revealed={splashDone} />
         <QuickAccess revealed={splashDone} />
-        {SECTION_ANCHORS.map((id) => (
+        <AboutSection />
+        <NoticesSection />
+        <SiteFooter />
+        {SECTION_ANCHORS.filter(
+          (id) =>
+            ![
+              "o-organizacii",
+              "oznamenia",
+              "aktualne-ovs",
+              "kontakty",
+            ].includes(id),
+        ).map((id) => (
           <div key={id} id={id} className="h-0 scroll-mt-24" aria-hidden />
         ))}
       </main>

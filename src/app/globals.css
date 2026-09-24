@@ -4,6 +4,7 @@
   --anthracite: #111111;
   --cream: #f9f9f6;
   --amber: #f59e0b;
+  --royal: #1d4ed8;
   --background: var(--anthracite);
   --foreground: var(--cream);
 }
@@ -12,6 +13,7 @@
   --color-anthracite: var(--anthracite);
   --color-cream: var(--cream);
   --color-amber: var(--amber);
+  --color-royal: var(--royal);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit);

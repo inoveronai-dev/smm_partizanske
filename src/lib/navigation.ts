@@ -9,6 +9,7 @@ export type NavItem = {
 export const NAV_ITEMS: NavItem[] = [
   {
     label: "O nás",
+    href: "#o-nas",
     children: [
       { label: "O organizácii", href: "#o-organizacii" },
       { label: "Kontakty", href: "#kontakty" },
