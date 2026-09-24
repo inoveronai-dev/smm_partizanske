@@ -14,12 +14,13 @@ export function Hero({ revealed = true }: HeroProps) {
       <div className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/hero-panorama.jpg"
-          alt="Nočná panoráma mesta s teplým architektonickým osvetlením"
-          className={`h-full w-full object-cover object-center transition-transform duration-[1.4s] ease-out ${
+          src="/hero-panorama.png"
+          alt="Nočná panoráma Partizánskeho s teplým architektonickým osvetlením"
+          className={`h-full w-full object-cover object-[center_40%] transition-transform duration-[1.4s] ease-out ${
             revealed ? "scale-100" : "scale-105"
           }`}
           fetchPriority="high"
+          decoding="async"
         />
         <div
           className="absolute inset-0 bg-gradient-to-b from-anthracite/80 via-anthracite/55 to-anthracite"
