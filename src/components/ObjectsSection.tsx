@@ -11,12 +11,12 @@ import {
 const CATEGORIES: BuildingCategory[] = ["residential", "commercial"];
 
 const cardClassName =
-  "group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:shadow-md hover:shadow-[#2563eb]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]";
+  "group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#2563eb] hover:shadow-md hover:shadow-[#2563eb]/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]";
 
 function BuildingCardContent({ building }: { building: Building }) {
   return (
     <>
-      <span className="relative aspect-[4/3] overflow-hidden bg-[#eef2ff]">
+      <span className="relative aspect-[4/3] overflow-hidden bg-royal-soft">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={building.image}
@@ -26,11 +26,11 @@ function BuildingCardContent({ building }: { building: Building }) {
           decoding="async"
         />
       </span>
-      <span className="flex flex-1 flex-col gap-2 px-4 py-4 sm:px-5 sm:py-5">
-        <span className="font-serif text-lg leading-snug text-ink sm:text-xl">
+      <span className="flex flex-1 flex-col gap-3 px-5 py-5">
+        <span className="font-serif text-xl font-semibold leading-snug text-ink">
           {building.address}
         </span>
-        <span className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
+        <span className="inline-flex w-fit items-center rounded-md bg-royal-soft px-3 py-1.5 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb] transition-colors group-hover:bg-[#2563eb] group-hover:text-surface">
           {building.href ? "Otvoriť detail" : "Zobraziť detail"}
         </span>
       </span>
@@ -195,18 +195,16 @@ export function ObjectsSection() {
       className="scroll-mt-24 bg-[#fcfcfc]"
       aria-labelledby="objekty-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-        <div className="mb-10 max-w-2xl sm:mb-12">
-          <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-[#2563eb]">
-            Spravujeme
-          </p>
+      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+        <div className="mb-12 max-w-2xl sm:mb-14">
+          <p className="section-label">Spravujeme</p>
           <h2
             id="objekty-heading"
-            className="mt-4 font-serif text-3xl font-medium tracking-wide text-ink sm:text-4xl md:text-5xl"
+            className="section-heading mt-5 text-3xl sm:text-4xl md:text-5xl"
           >
             Objekty SMM
           </h2>
-          <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-muted sm:text-lg">
+          <p className="mt-5 max-w-xl font-sans text-lg leading-relaxed text-ink">
             Vyberte kategóriu a pozrite si mestské objekty v správe SMM
             Partizánske. Pri nebytových objektoch otvoríte detail kliknutím na
             kartu.
@@ -251,10 +249,10 @@ export function ObjectsSection() {
                   {meta.description}
                 </span>
                 <span
-                  className={`mt-6 inline-flex items-center justify-center px-5 py-2.5 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] transition-colors ${
+                  className={`mt-6 inline-flex min-h-11 items-center justify-center rounded-md px-6 py-2.5 font-sans text-sm font-bold uppercase tracking-[0.16em] transition-colors ${
                     active
                       ? "bg-[#2563eb] text-surface"
-                      : "border border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb] hover:text-surface"
+                      : "border-2 border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb] hover:text-surface"
                   }`}
                 >
                   Zobraziť
@@ -270,10 +268,10 @@ export function ObjectsSection() {
           aria-label={CATEGORY_META[category].title}
         >
           <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-            <h3 className="font-serif text-2xl text-ink sm:text-3xl">
+            <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
               {CATEGORY_META[category].title}
             </h3>
-            <p className="font-sans text-sm text-muted">
+            <p className="font-sans text-base font-medium text-ink/70">
               {filtered.length > 0
                 ? `${filtered.length} ${filtered.length === 1 ? "objekt" : "objektov"}`
                 : "Zatiaľ bez položiek"}

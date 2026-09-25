@@ -38,7 +38,7 @@ export function Hero({ revealed = true }: HeroProps) {
         }`}
       >
         <p
-          className={`font-sans text-[0.72rem] font-semibold uppercase tracking-[0.42em] text-royal sm:text-xs ${
+          className={`font-sans text-sm font-bold uppercase tracking-[0.35em] text-[#2563eb] sm:text-base ${
             revealed ? "animate-hero-rise" : "opacity-0"
           }`}
           style={{ animationDelay: revealed ? "0.15s" : undefined }}
@@ -47,7 +47,7 @@ export function Hero({ revealed = true }: HeroProps) {
         </p>
 
         <h1
-          className={`mt-5 font-serif text-[clamp(3rem,11vw,6.75rem)] font-medium leading-[0.95] tracking-[0.04em] text-ink sm:mt-6 ${
+          className={`mt-5 font-serif text-[clamp(3rem,11vw,6.75rem)] font-semibold leading-[0.95] tracking-[0.04em] text-ink sm:mt-6 ${
             revealed ? "animate-hero-rise" : "opacity-0"
           }`}
           style={{ animationDelay: revealed ? "0.32s" : undefined }}
@@ -56,7 +56,7 @@ export function Hero({ revealed = true }: HeroProps) {
         </h1>
 
         <span
-          className={`mt-6 h-px w-14 origin-center bg-royal sm:mt-7 sm:w-16 ${
+          className={`mt-6 h-0.5 w-16 origin-center bg-[#2563eb] sm:mt-7 sm:w-20 ${
             revealed ? "animate-divider-draw" : "opacity-0"
           }`}
           style={{

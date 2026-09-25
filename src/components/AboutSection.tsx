@@ -2,7 +2,7 @@ export function AboutSection() {
   return (
     <section
       id="o-nas"
-      className="relative scroll-mt-24 bg-paper"
+      className="relative scroll-mt-24 bg-[#fcfcfc]"
       aria-labelledby="o-nas-heading"
     >
       <div
@@ -10,57 +10,55 @@ export function AboutSection() {
         className="pointer-events-none absolute -top-24"
         aria-hidden
       />
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
+      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           <div>
-            <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-royal">
-              Organizácia
-            </p>
+            <p className="section-label">Organizácia</p>
             <h2
               id="o-nas-heading"
-              className="mt-4 font-serif text-4xl font-medium tracking-[0.08em] text-ink sm:text-5xl md:text-6xl"
+              className="section-heading mt-5 text-4xl sm:text-5xl md:text-6xl"
             >
               O NÁS
             </h2>
-            <span className="mt-6 block h-px w-14 bg-royal" aria-hidden />
+            <span className="mt-7 block h-0.5 w-16 bg-[#2563eb]" aria-hidden />
           </div>
 
-          <div className="border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8 lg:p-10">
-            <p className="font-sans text-base leading-relaxed text-muted sm:text-lg">
+          <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8 lg:p-10">
+            <p className="font-sans text-lg leading-relaxed text-ink sm:text-xl">
               Správa majetku mesta bola ako nezisková organizácia mesta
               Partizánske so samostatnou právnou subjektivitou založená k{" "}
-              <span className="font-medium text-ink">9. 12. 2005</span>. Od
+              <span className="font-semibold text-ink">9. 12. 2005</span>. Od
               svojho vzniku zabezpečuje starostlivosť o mestský majetok s
               dôrazom na transparentnosť, spoľahlivosť a dostupnosť služieb pre
               občanov.
             </p>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              <div className="border border-line bg-paper/80 p-5">
-                <h3 className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-royal">
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              <div className="rounded-xl border border-line bg-[#fcfcfc] p-5 sm:p-6">
+                <h3 className="font-sans text-sm font-bold uppercase tracking-[0.22em] text-[#2563eb]">
                   Hlavná činnosť
                 </h3>
-                <ul className="mt-4 space-y-3 font-sans text-sm leading-relaxed text-ink/80 sm:text-base">
-                  <li className="border-l-2 border-royal/40 pl-3">
+                <ul className="mt-5 space-y-3.5 font-sans text-base leading-relaxed text-ink">
+                  <li className="border-l-[3px] border-[#2563eb] pl-3.5">
                     Správa bytového fondu a nájomných vzťahov
                   </li>
-                  <li className="border-l-2 border-royal/40 pl-3">
+                  <li className="border-l-[3px] border-[#2563eb] pl-3.5">
                     Údržba a prevádzka zvereného majetku
                   </li>
-                  <li className="border-l-2 border-royal/40 pl-3">
+                  <li className="border-l-[3px] border-[#2563eb] pl-3.5">
                     Výstavba nájomných bytových domov
                   </li>
                 </ul>
               </div>
-              <div className="border border-line bg-paper/80 p-5">
-                <h3 className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-amber">
+              <div className="rounded-xl border border-line bg-[#fcfcfc] p-5 sm:p-6">
+                <h3 className="font-sans text-sm font-bold uppercase tracking-[0.22em] text-[#2563eb]">
                   Podnikateľská činnosť
                 </h3>
-                <ul className="mt-4 space-y-3 font-sans text-sm leading-relaxed text-ink/80 sm:text-base">
-                  <li className="border-l-2 border-line pl-3">
+                <ul className="mt-5 space-y-3.5 font-sans text-base leading-relaxed text-ink">
+                  <li className="border-l-[3px] border-line pl-3.5">
                     Správa nehnuteľností a súvisiacich služieb
                   </li>
-                  <li className="border-l-2 border-line pl-3">
+                  <li className="border-l-[3px] border-line pl-3.5">
                     Výkon práv a povinností mesta Partizánske voči nájomcom a
                     partnerom
                   </li>
@@ -71,14 +69,14 @@ export function AboutSection() {
         </div>
       </div>
 
-      <div className="bg-royal">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-10 sm:px-8 sm:py-12 lg:flex-row lg:items-center lg:px-10">
-          <p className="max-w-2xl font-serif text-2xl leading-snug text-surface sm:text-3xl">
+      <div className="bg-[#2563eb]">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-12 sm:px-8 sm:py-14 lg:flex-row lg:items-center lg:px-10">
+          <p className="max-w-2xl font-serif text-2xl font-semibold leading-snug text-surface sm:text-3xl">
             Hľadáte správcu alebo voľné priestory? Kontaktujte nás.
           </p>
           <a
             href="#kontakty"
-            className="inline-flex items-center justify-center bg-surface px-6 py-3.5 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-royal transition-colors hover:bg-paper"
+            className="inline-flex min-h-12 items-center justify-center rounded-md bg-surface px-7 py-3.5 font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#2563eb] transition-colors hover:bg-[#fcfcfc]"
           >
             Kontaktovať SMM
           </a>

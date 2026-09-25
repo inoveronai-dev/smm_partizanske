@@ -51,7 +51,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     return (
       <a
         href={item.href}
-        className="font-sans text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink/75 transition-colors hover:text-royal"
+        className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:text-[#2563eb]"
       >
         {item.label}
       </a>
@@ -78,7 +78,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     >
       <button
         type="button"
-        className="inline-flex items-center gap-1.5 font-sans text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink/75 transition-colors hover:text-royal"
+        className="inline-flex items-center gap-1.5 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:text-[#2563eb]"
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={panelId}
@@ -102,7 +102,7 @@ function DesktopItem({ item }: { item: NavItem }) {
             key={child.href + child.label}
             href={child.href}
             role="menuitem"
-            className="block px-4 py-2.5 font-sans text-[0.72rem] tracking-wide text-ink/70 transition-colors hover:bg-royal-soft hover:text-royal"
+            className="block px-4 py-3 font-sans text-sm tracking-wide text-ink transition-colors hover:bg-royal-soft hover:text-[#2563eb]"
             onClick={() => setOpen(false)}
           >
             {child.label}
@@ -189,13 +189,13 @@ export function Header({ revealed = true }: HeaderProps) {
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 sm:h-[4.25rem] sm:px-8 lg:px-10">
         <a
           href="#top"
-          className="flex shrink-0 items-baseline gap-2.5 text-ink transition-colors hover:text-royal"
+          className="flex shrink-0 items-baseline gap-2.5 transition-opacity hover:opacity-90"
           aria-label="SMM Partizánske — domov"
         >
-          <span className="font-serif text-xl font-medium tracking-[0.12em] sm:text-2xl">
+          <span className="font-serif text-xl font-bold tracking-[0.12em] text-[#2563eb] sm:text-2xl">
             SMM
           </span>
-          <span className="font-sans text-[0.62rem] font-medium uppercase tracking-[0.26em] text-muted sm:text-[0.65rem]">
+          <span className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-ink sm:text-[0.7rem]">
             Partizánske
           </span>
         </a>

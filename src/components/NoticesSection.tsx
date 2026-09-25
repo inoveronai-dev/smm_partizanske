@@ -45,12 +45,12 @@ const OVS_ITEMS = [
 function ListHeader({ title, href }: { title: string; href: string }) {
   return (
     <div className="flex items-end justify-between gap-4 border-b border-line pb-5">
-      <h3 className="font-serif text-2xl tracking-wide text-ink sm:text-3xl">
+      <h3 className="font-serif text-2xl font-semibold tracking-wide text-ink sm:text-3xl">
         {title}
       </h3>
       <a
         href={href}
-        className="shrink-0 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-royal transition-colors hover:text-ink"
+        className="shrink-0 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#2563eb] transition-colors hover:text-ink"
       >
         Zobraziť všetko
       </a>
@@ -62,24 +62,22 @@ export function NoticesSection() {
   return (
     <section
       id="oznamenia"
-      className="scroll-mt-24 bg-paper"
+      className="scroll-mt-24 bg-[#fcfcfc]"
       aria-labelledby="oznamenia-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-        <div className="mb-12 max-w-2xl sm:mb-16">
-          <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-royal">
-            Aktuálne informácie
-          </p>
+      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+        <div className="mb-14 max-w-2xl">
+          <p className="section-label">Aktuálne informácie</p>
           <h2
             id="oznamenia-heading"
-            className="mt-4 font-serif text-3xl font-medium tracking-wide text-ink sm:text-4xl md:text-5xl"
+            className="section-heading mt-5 text-3xl sm:text-4xl md:text-5xl"
           >
             Oznámenia a najnovšie OVS
           </h2>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8">
+          <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8">
             <ListHeader title="Oznámenia" href="#oznamenia" />
             <ul className="divide-y divide-line">
               {NOTICES.map((item) => (
@@ -88,10 +86,10 @@ export function NoticesSection() {
                     href={item.href}
                     className="group flex flex-col gap-2 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                   >
-                    <span className="font-sans text-sm text-ink/85 transition-colors group-hover:text-royal sm:text-base">
+                    <span className="font-sans text-base font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-lg">
                       {item.title}
                     </span>
-                    <time className="shrink-0 font-sans text-[0.7rem] font-medium uppercase tracking-[0.18em] text-royal">
+                    <time className="shrink-0 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb]">
                       {item.date}
                     </time>
                   </a>
@@ -102,7 +100,7 @@ export function NoticesSection() {
 
           <div
             id="aktualne-ovs"
-            className="scroll-mt-24 border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8"
+            className="scroll-mt-24 rounded-2xl border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8"
           >
             <ListHeader title="Najnovšie OVS" href="#aktualne-ovs" />
             <ul className="divide-y divide-line">
@@ -113,14 +111,14 @@ export function NoticesSection() {
                     className="group flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
                   >
                     <span className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
-                      <span className="inline-flex w-fit bg-royal-soft px-2 py-0.5 font-sans text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-royal">
+                      <span className="inline-flex w-fit rounded-md bg-royal-soft px-2.5 py-1 font-sans text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
                         {item.category}
                       </span>
-                      <span className="font-sans text-sm text-ink/85 transition-colors group-hover:text-royal sm:text-base">
+                      <span className="font-sans text-base font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-lg">
                         {item.title}
                       </span>
                     </span>
-                    <time className="shrink-0 font-sans text-[0.7rem] font-medium uppercase tracking-[0.18em] text-royal">
+                    <time className="shrink-0 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb]">
                       {item.date}
                     </time>
                   </a>

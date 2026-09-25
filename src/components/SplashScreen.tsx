@@ -44,14 +44,14 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       role="presentation"
     >
       <div className="flex flex-col items-center px-6 text-center">
-        <p className="animate-splash-mark font-serif text-5xl font-medium tracking-[0.28em] text-ink sm:text-6xl md:text-7xl">
+        <p className="animate-splash-mark font-serif text-5xl font-bold tracking-[0.28em] text-[#2563eb] sm:text-6xl md:text-7xl">
           SMM
         </p>
         <span
-          className="animate-splash-line mt-5 h-px w-16 origin-center bg-royal"
+          className="animate-splash-line mt-5 h-0.5 w-16 origin-center bg-[#2563eb]"
           aria-hidden
         />
-        <p className="animate-splash-mark mt-5 max-w-xs font-sans text-[0.65rem] font-medium uppercase tracking-[0.32em] text-muted sm:text-xs [animation-delay:150ms] [animation-fill-mode:both]">
+        <p className="animate-splash-mark mt-5 max-w-xs font-sans text-xs font-semibold uppercase tracking-[0.28em] text-ink sm:text-sm [animation-delay:150ms] [animation-fill-mode:both]">
           Správa majetku mesta
           <span className="mt-1.5 block tracking-[0.28em]">
             n.o., Partizánske

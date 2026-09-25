@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f7f7f4;
+  --paper: #fcfcfc;
   --surface: #ffffff;
   --ink: #111111;
-  --muted: #4b5563;
+  --muted: #374151;
   --line: #e5e7eb;
-  --royal: #1d4ed8;
+  --royal: #2563eb;
   --royal-soft: #eff6ff;
   --amber: #f59e0b;
   --background: var(--paper);
@@ -36,6 +36,25 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.section-label {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--royal);
+}
+
+.section-heading {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.1;
 }
 
 ::selection {

@@ -23,17 +23,15 @@ export function SiteFooter() {
   return (
     <footer
       id="kontakty"
-      className="scroll-mt-24 border-t border-line bg-paper"
+      className="scroll-mt-24 border-t border-line bg-[#fcfcfc]"
       aria-labelledby="kontakty-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
+      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
         <div className="mb-14 max-w-2xl">
-          <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-[0.35em] text-royal">
-            Kontakt & stránkové dni
-          </p>
+          <p className="section-label">Kontakt & stránkové dni</p>
           <h2
             id="kontakty-heading"
-            className="mt-4 font-serif text-3xl font-medium tracking-wide text-ink sm:text-4xl md:text-5xl"
+            className="section-heading mt-5 text-3xl sm:text-4xl md:text-5xl"
           >
             Sme tu pre vás
           </h2>
@@ -43,12 +41,12 @@ export function SiteFooter() {
           {OFFICE_HOURS.map((block) => (
             <div
               key={block.title}
-              className="border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8"
+              className="border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:rounded-2xl sm:p-8"
             >
-              <p className="font-sans text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-royal">
+              <p className="font-sans text-sm font-bold uppercase tracking-[0.22em] text-[#2563eb]">
                 {block.note}
               </p>
-              <h3 className="mt-3 font-serif text-2xl text-ink sm:text-[1.75rem]">
+              <h3 className="mt-3 font-serif text-2xl font-semibold text-ink sm:text-[1.75rem]">
                 {block.title}
               </h3>
               <ul className="mt-6 space-y-4">
@@ -57,10 +55,10 @@ export function SiteFooter() {
                     key={row.day}
                     className="flex flex-col gap-1 border-t border-line pt-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                   >
-                    <span className="font-sans text-sm font-medium uppercase tracking-[0.16em] text-muted">
+                    <span className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-ink">
                       {row.day}
                     </span>
-                    <span className="font-sans text-sm text-ink sm:text-right">
+                    <span className="font-sans text-base text-ink sm:text-right">
                       {row.hours}
                     </span>
                   </li>
@@ -72,21 +70,21 @@ export function SiteFooter() {
 
         <div className="mt-14 grid gap-10 border-t border-line pt-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div>
-            <p className="font-serif text-2xl text-ink sm:text-3xl">
+            <p className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
               Správa majetku mesta, n.o., Partizánske
             </p>
-            <div className="mt-6 space-y-2 font-sans text-sm leading-relaxed text-muted sm:text-base">
+            <div className="mt-6 space-y-2 font-sans text-base leading-relaxed text-ink sm:text-lg">
               <p>
                 <a
                   href="mailto:sekretariat@smmpartizanske.sk"
-                  className="transition-colors hover:text-royal"
+                  className="font-medium text-[#2563eb] transition-colors hover:text-ink"
                 >
                   sekretariat@smmpartizanske.sk
                 </a>
                 <span className="mx-2 text-line">|</span>
                 <a
                   href="tel:+421382851711"
-                  className="transition-colors hover:text-royal"
+                  className="font-medium text-[#2563eb] transition-colors hover:text-ink"
                 >
                   Tel.: 038/28 517 11
                 </a>
@@ -104,13 +102,13 @@ export function SiteFooter() {
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-end lg:flex-col xl:flex-row">
             <a
               href="mailto:sekretariat@smmpartizanske.sk?subject=Spr%C3%A1va%20pre%20riadite%C4%BEa"
-              className="inline-flex items-center justify-center bg-royal px-5 py-3.5 text-center font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-surface transition-colors hover:bg-ink"
+              className="inline-flex min-h-12 items-center justify-center rounded-md bg-[#2563eb] px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-ink"
             >
               Napíšte riaditeľovi
             </a>
             <a
               href="#top"
-              className="inline-flex items-center justify-center border border-line bg-surface px-5 py-3.5 text-center font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ink transition-colors hover:border-royal hover:text-royal"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border-2 border-[#2563eb] bg-surface px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-[0.16em] text-[#2563eb] transition-colors hover:bg-[#2563eb] hover:text-surface"
             >
               Návrat hore
             </a>
