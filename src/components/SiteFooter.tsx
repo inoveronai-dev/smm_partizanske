@@ -41,7 +41,7 @@ export function SiteFooter() {
           {OFFICE_HOURS.map((block) => (
             <div
               key={block.title}
-              className="border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:rounded-2xl sm:p-8"
+              className="rounded-2xl border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8"
             >
               <p className="font-sans text-sm font-bold uppercase tracking-[0.22em] text-[#2563eb]">
                 {block.note}
