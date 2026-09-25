@@ -2,15 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-const HOLD_MS = 1500;
-const EXIT_MS = 650;
+const TOTAL_MS = 2200;
 
 type SplashScreenProps = {
   onComplete?: () => void;
 };
 
 export function SplashScreen({ onComplete }: SplashScreenProps) {
-  const [exiting, setExiting] = useState(false);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
@@ -18,29 +16,21 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    const holdMs = reduceMotion ? 0 : HOLD_MS;
-    const exitMs = reduceMotion ? 0 : EXIT_MS;
-
-    const exitTimer = window.setTimeout(() => setExiting(true), holdMs);
-    const doneTimer = window.setTimeout(() => {
+    const delay = reduceMotion ? 0 : TOTAL_MS;
+    const timer = window.setTimeout(() => {
       setDone(true);
       onComplete?.();
-    }, holdMs + exitMs);
+    }, delay);
 
-    return () => {
-      window.clearTimeout(exitTimer);
-      window.clearTimeout(doneTimer);
-    };
+    return () => window.clearTimeout(timer);
   }, [onComplete]);
 
   if (done) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-paper ${
-        exiting ? "animate-splash-exit" : ""
-      }`}
-      aria-hidden={exiting}
+      className="splash-overlay fixed inset-0 z-[100] flex items-center justify-center bg-[#fcfcfc]"
+      aria-hidden
       role="presentation"
     >
       <div className="flex flex-col items-center px-6 text-center">

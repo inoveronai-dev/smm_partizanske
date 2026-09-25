@@ -1,6 +1,5 @@
 "use client";
 
-import { useCallback, useState } from "react";
 import { AboutSection } from "@/components/AboutSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -12,19 +11,14 @@ import { SplashScreen } from "@/components/SplashScreen";
 import { SECTION_ANCHORS } from "@/lib/navigation";
 
 export function HomeExperience() {
-  const [splashDone, setSplashDone] = useState(false);
-
-  const handleSplashComplete = useCallback(() => {
-    setSplashDone(true);
-  }, []);
-
   return (
     <>
-      <SplashScreen onComplete={handleSplashComplete} />
-      <Header revealed={splashDone} />
+      <SplashScreen />
+      {/* Content is always visible — splash is only a temporary overlay */}
+      <Header revealed />
       <main>
-        <Hero revealed={splashDone} />
-        <QuickAccess revealed={splashDone} />
+        <Hero revealed />
+        <QuickAccess revealed />
         <AboutSection />
         <ObjectsSection />
         <NoticesSection />

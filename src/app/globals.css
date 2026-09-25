@@ -93,6 +93,24 @@ body {
   }
 }
 
+/* Auto-dismiss splash even if JS hydration is delayed (e.g. tunnel preview) */
+@keyframes splash-overlay-lifecycle {
+  0%,
+  55% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.splash-overlay {
+  animation: splash-overlay-lifecycle 2.2s ease-in-out forwards;
+}
+
 @keyframes hero-rise {
   from {
     opacity: 0;
@@ -156,9 +174,14 @@ body {
   .animate-splash-exit,
   .animate-hero-rise,
   .animate-divider-draw,
-  .animate-ticker-scroll {
+  .animate-ticker-scroll,
+  .splash-overlay {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .splash-overlay {
+    display: none !important;
   }
 }

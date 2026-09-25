@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
     "localhost",
     "*.cursor.sh",
     "*.cursor.com",
+    "*.loca.lt",
+    "funny-rules-ask.loca.lt",
   ],
 };
 
