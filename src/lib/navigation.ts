@@ -13,6 +13,7 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "O organizácii", href: "#o-organizacii" },
       { label: "Kontakty", href: "#kontakty" },
+      { label: "Kde nás nájdete", href: "#kde-nas-najdete" },
       { label: "Správna rada", href: "#spravna-rada" },
     ],
   },

@@ -36,6 +36,7 @@ export function HomeExperience() {
               "oznamenia",
               "aktualne-ovs",
               "kontakty",
+              "kde-nas-najdete",
               "objekty-smm",
             ].includes(id),
         ).map((id) => (
