@@ -10,7 +10,7 @@ import {
 
 const CATEGORIES: BuildingCategory[] = ["residential", "commercial"];
 
-const cardClassName =
+const buildingCardClassName =
   "group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#2563eb] hover:shadow-md hover:shadow-[#2563eb]/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]";
 
 function BuildingCardContent({ building }: { building: Building }) {
@@ -26,8 +26,8 @@ function BuildingCardContent({ building }: { building: Building }) {
           decoding="async"
         />
       </span>
-      <span className="flex flex-1 flex-col gap-3 px-5 py-5">
-        <span className="font-serif text-xl font-semibold leading-snug text-ink">
+      <span className="flex flex-1 flex-col gap-3 px-4 py-4 sm:px-5 sm:py-5">
+        <span className="font-serif text-lg font-semibold leading-snug text-ink sm:text-xl">
           {building.address}
         </span>
         <span className="inline-flex w-fit items-center rounded-md bg-royal-soft px-3 py-1.5 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb] transition-colors group-hover:bg-[#2563eb] group-hover:text-surface">
@@ -40,10 +40,10 @@ function BuildingCardContent({ building }: { building: Building }) {
 
 function BuildingCard({
   building,
-  onOpen,
+  onOpenDetail,
 }: {
   building: Building;
-  onOpen: (building: Building) => void;
+  onOpenDetail: (building: Building) => void;
 }) {
   if (building.href) {
     return (
@@ -51,7 +51,7 @@ function BuildingCard({
         href={building.href}
         target="_blank"
         rel="noopener noreferrer"
-        className={cardClassName}
+        className={buildingCardClassName}
       >
         <BuildingCardContent building={building} />
       </a>
@@ -61,15 +61,112 @@ function BuildingCard({
   return (
     <button
       type="button"
-      onClick={() => onOpen(building)}
-      className={cardClassName}
+      onClick={() => onOpenDetail(building)}
+      className={buildingCardClassName}
     >
       <BuildingCardContent building={building} />
     </button>
   );
 }
 
-function BuildingModal({
+function CategoryGalleryModal({
+  category,
+  buildings,
+  onClose,
+  onOpenDetail,
+}: {
+  category: BuildingCategory;
+  buildings: Building[];
+  onClose: () => void;
+  onOpenDetail: (building: Building) => void;
+}) {
+  const titleId = useId();
+  const meta = CATEGORY_META[category];
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[80] flex items-end justify-center bg-black/40 p-0 backdrop-blur-sm sm:items-center sm:p-6 md:p-10"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+      onClick={onClose}
+    >
+      <div
+        className="flex max-h-[100svh] w-full max-w-6xl flex-col overflow-hidden rounded-t-3xl border border-line bg-[#fcfcfc] shadow-2xl shadow-ink/25 sm:max-h-[90svh] sm:rounded-3xl"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <header className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-line bg-surface/95 px-5 py-5 backdrop-blur-md sm:px-8 sm:py-6">
+          <div>
+            <p className="font-sans text-xs font-bold uppercase tracking-[0.22em] text-[#2563eb]">
+              Objekty SMM
+            </p>
+            <h3
+              id={titleId}
+              className="mt-2 font-serif text-2xl font-semibold text-ink sm:text-3xl md:text-4xl"
+            >
+              {meta.title}
+            </h3>
+            <p className="mt-2 font-sans text-sm text-ink/70 sm:text-base">
+              {buildings.length}{" "}
+              {buildings.length === 1 ? "objekt" : "objektov"} ·{" "}
+              {meta.description}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            aria-label="Zavrieť"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-2xl leading-none text-ink transition-colors hover:border-[#2563eb] hover:text-[#2563eb]"
+            onClick={onClose}
+          >
+            <span aria-hidden>×</span>
+          </button>
+        </header>
+
+        <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-8">
+          {buildings.length > 0 ? (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {buildings.map((building) => (
+                <BuildingCard
+                  key={building.id}
+                  building={building}
+                  onOpenDetail={onOpenDetail}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-line bg-surface px-6 py-16 text-center">
+              <p className="font-serif text-2xl text-ink">
+                Zatiaľ bez objektov v tejto kategórii
+              </p>
+              <p className="mx-auto mt-3 max-w-md font-sans text-base leading-relaxed text-ink/70">
+                Zoznam bude doplnený. Medzitým môžete pozrieť druhú kategóriu
+                alebo nás kontaktovať.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BuildingDetailModal({
   building,
   buildings,
   onClose,
@@ -92,27 +189,23 @@ function BuildingModal({
       if (event.key === "ArrowRight" && hasNext) onSelect(buildings[index + 1]);
     };
 
-    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [buildings, hasNext, hasPrev, index, onClose, onSelect]);
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/45 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-[90] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
       onClick={onClose}
     >
       <div
-        className="relative grid w-full max-w-4xl overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl shadow-ink/20 md:grid-cols-[1.2fr_0.8fr]"
+        className="relative grid w-full max-w-4xl overflow-hidden rounded-3xl border border-line bg-surface shadow-2xl shadow-ink/25 md:grid-cols-[1.2fr_0.8fr]"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="relative aspect-[4/3] bg-[#eef2ff] md:aspect-auto md:min-h-[22rem]">
+        <div className="relative aspect-[4/3] bg-royal-soft md:aspect-auto md:min-h-[22rem]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={building.image}
@@ -122,16 +215,16 @@ function BuildingModal({
         </div>
         <div className="flex flex-col justify-between gap-6 p-6 sm:p-8">
           <div>
-            <p className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-[#2563eb]">
+            <p className="font-sans text-xs font-bold uppercase tracking-[0.22em] text-[#2563eb]">
               Objekt SMM
             </p>
             <h3
               id={titleId}
-              className="mt-3 font-serif text-2xl leading-snug text-ink sm:text-3xl"
+              className="mt-3 font-serif text-2xl font-semibold leading-snug text-ink sm:text-3xl"
             >
               {building.address}
             </h3>
-            <p className="mt-4 font-sans text-sm leading-relaxed text-muted sm:text-base">
+            <p className="mt-4 font-sans text-base leading-relaxed text-ink/75">
               Mestský bytový dom v správe Správy majetku mesta, n.o.,
               Partizánske. Pre bližšie informácie o bytoch alebo údržbe nás
               kontaktujte.
@@ -141,7 +234,7 @@ function BuildingModal({
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
-              className="inline-flex items-center justify-center bg-[#2563eb] px-4 py-3 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-surface transition-colors hover:bg-ink disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#2563eb] px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-ink disabled:cursor-not-allowed disabled:opacity-40"
               disabled={!hasPrev}
               onClick={() => hasPrev && onSelect(buildings[index - 1])}
             >
@@ -149,7 +242,7 @@ function BuildingModal({
             </button>
             <button
               type="button"
-              className="inline-flex items-center justify-center border border-line bg-surface px-4 py-3 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:border-[#2563eb] hover:text-[#2563eb] disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-line bg-surface px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:border-[#2563eb] hover:text-[#2563eb] disabled:cursor-not-allowed disabled:opacity-40"
               disabled={!hasNext}
               onClick={() => hasNext && onSelect(buildings[index + 1])}
             >
@@ -157,7 +250,7 @@ function BuildingModal({
             </button>
             <a
               href="#kontakty"
-              className="inline-flex items-center justify-center border border-[#2563eb]/30 bg-[#eff6ff] px-4 py-3 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#2563eb] transition-colors hover:bg-[#2563eb] hover:text-surface"
+              className="inline-flex min-h-11 items-center justify-center rounded-md border border-[#2563eb]/30 bg-royal-soft px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb] transition-colors hover:bg-[#2563eb] hover:text-surface"
               onClick={onClose}
             >
               Kontakt
@@ -167,13 +260,11 @@ function BuildingModal({
 
         <button
           type="button"
-          aria-label="Zavrieť"
-          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-surface/95 text-ink shadow-sm transition-colors hover:text-[#2563eb]"
+          aria-label="Zavrieť detail"
+          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-xl leading-none text-ink shadow-sm transition-colors hover:border-[#2563eb] hover:text-[#2563eb]"
           onClick={onClose}
         >
-          <span aria-hidden className="text-xl leading-none">
-            ×
-          </span>
+          <span aria-hidden>×</span>
         </button>
       </div>
     </div>
@@ -181,13 +272,25 @@ function BuildingModal({
 }
 
 export function ObjectsSection() {
-  const [category, setCategory] = useState<BuildingCategory>("residential");
-  const [selected, setSelected] = useState<Building | null>(null);
-
-  const filtered = useMemo(
-    () => BUILDINGS.filter((building) => building.category === category),
-    [category],
+  const [openCategory, setOpenCategory] = useState<BuildingCategory | null>(
+    null,
   );
+  const [selectedBuilding, setSelectedBuilding] = useState<Building | null>(
+    null,
+  );
+
+  const modalBuildings = useMemo(
+    () =>
+      openCategory
+        ? BUILDINGS.filter((building) => building.category === openCategory)
+        : [],
+    [openCategory],
+  );
+
+  const closeCategoryModal = () => {
+    setSelectedBuilding(null);
+    setOpenCategory(null);
+  };
 
   return (
     <section
@@ -205,116 +308,70 @@ export function ObjectsSection() {
             Objekty SMM
           </h2>
           <p className="mt-5 max-w-xl font-sans text-lg leading-relaxed text-ink">
-            Vyberte kategóriu a pozrite si mestské objekty v správe SMM
-            Partizánske. Pri nebytových objektoch otvoríte detail kliknutím na
-            kartu.
+            Kliknite na{" "}
+            <span className="font-semibold text-[#2563eb]">Zobraziť</span> a
+            otvorí sa prehľad objektov v elegantnom okne — bez zbytočného
+            scrollovania stránky.
           </p>
         </div>
 
-        <div
-          className="grid gap-4 sm:grid-cols-2"
-          role="tablist"
-          aria-label="Kategórie objektov"
-        >
+        <div className="grid gap-4 sm:grid-cols-2" aria-label="Kategórie objektov">
           {CATEGORIES.map((key) => {
-            const active = category === key;
             const meta = CATEGORY_META[key];
-            const count = BUILDINGS.filter((item) => item.category === key)
-              .length;
+            const count = BUILDINGS.filter(
+              (item) => item.category === key,
+            ).length;
+            const isOpen = openCategory === key;
 
             return (
-              <button
+              <div
                 key={key}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                onClick={() => setCategory(key)}
-                className={`flex flex-col items-start rounded-2xl border p-6 text-left transition-[border-color,box-shadow,background-color] duration-300 sm:p-8 ${
-                  active
-                    ? "border-[#2563eb] bg-surface shadow-md shadow-[#2563eb]/15"
-                    : "border-line bg-surface shadow-sm shadow-ink/5 hover:border-[#2563eb]/40"
+                className={`flex flex-col items-start rounded-2xl border bg-surface p-6 text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow] duration-300 sm:p-8 ${
+                  isOpen
+                    ? "border-[#2563eb] shadow-md shadow-[#2563eb]/15"
+                    : "border-line hover:border-[#2563eb]/40"
                 }`}
               >
-                <span
-                  className={`font-sans text-[0.62rem] font-semibold uppercase tracking-[0.28em] ${
-                    active ? "text-[#2563eb]" : "text-muted"
-                  }`}
-                >
+                <span className="font-sans text-xs font-bold uppercase tracking-[0.22em] text-[#2563eb]">
                   {count} objektov
                 </span>
-                <span className="mt-3 font-serif text-2xl text-ink sm:text-3xl">
+                <h3 className="mt-3 font-serif text-2xl font-semibold text-ink sm:text-3xl">
                   {meta.title}
-                </span>
-                <span className="mt-2 font-sans text-sm leading-relaxed text-muted">
+                </h3>
+                <p className="mt-2 font-sans text-base leading-relaxed text-ink/70">
                   {meta.description}
-                </span>
-                <span
-                  className={`mt-6 inline-flex min-h-11 items-center justify-center rounded-md px-6 py-2.5 font-sans text-sm font-bold uppercase tracking-[0.16em] transition-colors ${
-                    active
-                      ? "bg-[#2563eb] text-surface"
-                      : "border-2 border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb] hover:text-surface"
-                  }`}
+                </p>
+                <button
+                  type="button"
+                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-[#2563eb] px-7 py-3 font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-ink"
+                  onClick={() => {
+                    setSelectedBuilding(null);
+                    setOpenCategory(key);
+                  }}
                 >
                   Zobraziť
-                </span>
-              </button>
+                </button>
+              </div>
             );
           })}
         </div>
-
-        <div
-          className="mt-10 sm:mt-12"
-          role="tabpanel"
-          aria-label={CATEGORY_META[category].title}
-        >
-          <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
-            <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
-              {CATEGORY_META[category].title}
-            </h3>
-            <p className="font-sans text-base font-medium text-ink/70">
-              {filtered.length > 0
-                ? `${filtered.length} ${filtered.length === 1 ? "objekt" : "objektov"}`
-                : "Zatiaľ bez položiek"}
-            </p>
-          </div>
-
-          {filtered.length > 0 ? (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((building) => (
-                <BuildingCard
-                  key={building.id}
-                  building={building}
-                  onOpen={setSelected}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-2xl border border-dashed border-line bg-surface px-6 py-16 text-center">
-              <p className="font-serif text-2xl text-ink">
-                Pripravujeme prehľad nebytových objektov
-              </p>
-              <p className="mx-auto mt-3 max-w-md font-sans text-sm leading-relaxed text-muted sm:text-base">
-                Zoznam mestských nebytových domov bude doplnený. Medzitým
-                môžete pozrieť bytové domy alebo nás kontaktovať.
-              </p>
-              <button
-                type="button"
-                className="mt-6 inline-flex items-center justify-center bg-[#2563eb] px-5 py-3 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-surface transition-colors hover:bg-ink"
-                onClick={() => setCategory("residential")}
-              >
-                Zobraziť bytové domy
-              </button>
-            </div>
-          )}
-        </div>
       </div>
 
-      {selected ? (
-        <BuildingModal
-          building={selected}
-          buildings={filtered}
-          onClose={() => setSelected(null)}
-          onSelect={setSelected}
+      {openCategory ? (
+        <CategoryGalleryModal
+          category={openCategory}
+          buildings={modalBuildings}
+          onClose={closeCategoryModal}
+          onOpenDetail={setSelectedBuilding}
+        />
+      ) : null}
+
+      {selectedBuilding ? (
+        <BuildingDetailModal
+          building={selectedBuilding}
+          buildings={modalBuildings}
+          onClose={() => setSelectedBuilding(null)}
+          onSelect={setSelectedBuilding}
         />
       ) : null}
     </section>
