@@ -1,23 +1,25 @@
 "use client";
 
+import { NoticesTicker } from "@/components/NoticesTicker";
+
 type QuickLink = {
   href: string;
   title: string;
   description: string;
-  icon: "contracts" | "orders" | "spaces" | "notices";
+  icon: "contracts" | "orders" | "spaces";
 };
 
 const QUICK_LINKS: QuickLink[] = [
   {
     href: "#zmluvy",
-    title: "Zmluvy a faktúry",
-    description: "Rýchle vyhľadávanie",
+    title: "Zmluvy",
+    description: "Rýchle vyhľadávanie zmlúv",
     icon: "contracts",
   },
   {
     href: "#faktury-objednavky",
-    title: "Objednávky",
-    description: "Aktuálne objednávky",
+    title: "Faktúry a objednávky",
+    description: "Prehľad faktúr a objednávok",
     icon: "orders",
   },
   {
@@ -26,18 +28,12 @@ const QUICK_LINKS: QuickLink[] = [
     description: "Prenájom a ponuka",
     icon: "spaces",
   },
-  {
-    href: "#oznamenia",
-    title: "Oznámenia",
-    description: "Aktuálne novinky",
-    icon: "notices",
-  },
 ];
 
 function QuickIcon({ name }: { name: QuickLink["icon"] }) {
   const common = {
     viewBox: "0 0 24 24",
-    className: "h-5 w-5",
+    className: "h-6 w-6",
     fill: "none",
     "aria-hidden": true as const,
   };
@@ -92,23 +88,6 @@ function QuickIcon({ name }: { name: QuickLink["icon"] }) {
           />
         </svg>
       );
-    case "notices":
-      return (
-        <svg {...common}>
-          <path
-            d="M6.5 16.5H5A1.5 1.5 0 0 1 3.5 15V9A1.5 1.5 0 0 1 5 7.5h1.5l10-3v15l-10-3Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M16.5 10.5a2.5 2.5 0 0 1 0 3"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </svg>
-      );
   }
 }
 
@@ -123,31 +102,40 @@ export function QuickAccess({ revealed = true }: QuickAccessProps) {
       aria-label="Rýchly prístup"
       className="relative z-20 -mt-24 px-4 sm:-mt-28 sm:px-6 md:-mt-32 lg:px-8"
     >
-      <div
-        className={`mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4 ${
-          revealed ? "animate-hero-rise" : "opacity-0"
-        }`}
-        style={{ animationDelay: revealed ? "0.85s" : undefined }}
-      >
-        {QUICK_LINKS.map((link) => (
-          <a
-            key={link.href + link.title}
-            href={link.href}
-            className="group flex min-h-[7.5rem] items-start gap-4 rounded-2xl border border-line bg-surface p-5 shadow-sm shadow-ink/5 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#2563eb] hover:shadow-md hover:shadow-[#2563eb]/15 sm:p-6"
-          >
-            <span className="mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#2563eb]/25 bg-royal-soft text-[#2563eb] transition-colors group-hover:border-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-surface">
-              <QuickIcon name={link.icon} />
-            </span>
-            <span className="min-w-0">
-              <span className="block font-serif text-xl font-semibold leading-snug text-ink">
-                {link.title}
+      <div className="mx-auto max-w-6xl space-y-4">
+        <div
+          className={`grid gap-4 sm:grid-cols-3 ${
+            revealed ? "animate-hero-rise" : "opacity-0"
+          }`}
+          style={{ animationDelay: revealed ? "0.85s" : undefined }}
+        >
+          {QUICK_LINKS.map((link) => (
+            <a
+              key={link.href + link.title}
+              href={link.href}
+              className="group flex min-h-[8rem] items-start gap-4 rounded-2xl border border-line bg-surface p-5 shadow-sm shadow-ink/5 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#2563eb] hover:shadow-md hover:shadow-[#2563eb]/15 sm:p-6"
+            >
+              <span className="mt-0.5 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#2563eb]/25 bg-royal-soft text-[#2563eb] transition-colors group-hover:border-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-surface">
+                <QuickIcon name={link.icon} />
               </span>
-              <span className="mt-2 block font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb]">
-                {link.description}
+              <span className="min-w-0">
+                <span className="block font-serif text-xl font-semibold leading-snug text-ink sm:text-[1.35rem]">
+                  {link.title}
+                </span>
+                <span className="mt-2 block font-sans text-xs font-bold uppercase tracking-[0.14em] text-[#2563eb]">
+                  {link.description}
+                </span>
               </span>
-            </span>
-          </a>
-        ))}
+            </a>
+          ))}
+        </div>
+
+        <div
+          className={revealed ? "animate-hero-rise" : "opacity-0"}
+          style={{ animationDelay: revealed ? "1.05s" : undefined }}
+        >
+          <NoticesTicker />
+        </div>
       </div>
     </section>
   );

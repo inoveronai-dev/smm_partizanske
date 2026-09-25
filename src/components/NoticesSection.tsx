@@ -1,23 +1,18 @@
 const NOTICES = [
   {
-    date: "12. 03. 2026",
+    date: "01. 06. 2026",
     title: "Voľné nebytové priestory",
-    href: "#volne-priestory",
+    href: "https://smmpartizanske.sk/index.php/2026/06/01/volne-nebytove-priestory/",
   },
   {
-    date: "28. 02. 2026",
+    date: "03. 03. 2026",
     title: "Kultúrny dom SC Malé Bielice – uzatvorený",
-    href: "#oznamenia",
+    href: "https://smmpartizanske.sk/index.php/2026/03/03/kulturny-dom-sc-male-bielice-uzatvoreny/",
   },
   {
-    date: "15. 02. 2026",
-    title: "Cenník údržby",
-    href: "#oznamenia",
-  },
-  {
-    date: "04. 02. 2026",
-    title: "Cena tepla",
-    href: "#oznamenia",
+    date: "16. 01. 2026",
+    title: "Cenník údržby a dopravy od 1.1.2026",
+    href: "https://smmpartizanske.sk/index.php/2026/01/16/cennik-udrzby-a-dopravy-od-1-1-2026/",
   },
 ] as const;
 
@@ -84,6 +79,8 @@ export function NoticesSection() {
                 <li key={item.title}>
                   <a
                     href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex flex-col gap-2 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                   >
                     <span className="font-sans text-base font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-lg">
