@@ -1,6 +1,19 @@
 # SMM Partizánske
 
-Editorial public website for **Správa majetku mesta, n.o., Partizánske** — clean light design for high readability.
+Website for **Správa majetku mesta, n.o., Partizánske**.
+
+## Run on your computer (real localhost)
+
+```bash
+git clone https://github.com/inoveronai-dev/smm_partizanske.git
+cd smm_partizanske
+npm install
+npm run dev
+```
+
+Then open: **http://127.0.0.1:43123**
+
+That is the normal local workflow. A Cloud Agent’s `localhost` is not your laptop’s `localhost`.
 
 ## Stack
 
@@ -8,17 +21,8 @@ Editorial public website for **Správa majetku mesta, n.o., Partizánske** — c
 - TypeScript
 - Tailwind CSS
 
-## Run locally
-
-```bash
-npm install
-npm run dev -- --port 43123
-```
-
-Open [http://127.0.0.1:43123](http://127.0.0.1:43123).
-
 ## Design
 
-- Light cream paper background with anthracite text
-- Royal blue primary accent (logo identity)
-- Soft amber used sparingly for secondary labels
+- Light cream background (`#fcfcfc`)
+- Anthracite text (`#111111`)
+- Royal blue accent (`#2563eb`)
