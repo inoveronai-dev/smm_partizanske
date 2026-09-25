@@ -10,19 +10,12 @@ import {
 
 const CATEGORIES: BuildingCategory[] = ["residential", "commercial"];
 
-function BuildingCard({
-  building,
-  onOpen,
-}: {
-  building: Building;
-  onOpen: (building: Building) => void;
-}) {
+const cardClassName =
+  "group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:shadow-md hover:shadow-[#2563eb]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]";
+
+function BuildingCardContent({ building }: { building: Building }) {
   return (
-    <button
-      type="button"
-      onClick={() => onOpen(building)}
-      className="group flex w-full flex-col overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-[#2563eb]/40 hover:shadow-md hover:shadow-[#2563eb]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
-    >
+    <>
       <span className="relative aspect-[4/3] overflow-hidden bg-[#eef2ff]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -38,9 +31,40 @@ function BuildingCard({
           {building.address}
         </span>
         <span className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#2563eb]">
-          Zobraziť detail
+          {building.href ? "Otvoriť detail" : "Zobraziť detail"}
         </span>
       </span>
+    </>
+  );
+}
+
+function BuildingCard({
+  building,
+  onOpen,
+}: {
+  building: Building;
+  onOpen: (building: Building) => void;
+}) {
+  if (building.href) {
+    return (
+      <a
+        href={building.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cardClassName}
+      >
+        <BuildingCardContent building={building} />
+      </a>
+    );
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(building)}
+      className={cardClassName}
+    >
+      <BuildingCardContent building={building} />
     </button>
   );
 }
@@ -184,7 +208,8 @@ export function ObjectsSection() {
           </h2>
           <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-muted sm:text-lg">
             Vyberte kategóriu a pozrite si mestské objekty v správe SMM
-            Partizánske. Kliknutím na fotografiu otvoríte detail budovy.
+            Partizánske. Pri nebytových objektoch otvoríte detail kliknutím na
+            kartu.
           </p>
         </div>
 
@@ -250,7 +275,7 @@ export function ObjectsSection() {
             </h3>
             <p className="font-sans text-sm text-muted">
               {filtered.length > 0
-                ? `${filtered.length} budov`
+                ? `${filtered.length} ${filtered.length === 1 ? "objekt" : "objektov"}`
                 : "Zatiaľ bez položiek"}
             </p>
           </div>
