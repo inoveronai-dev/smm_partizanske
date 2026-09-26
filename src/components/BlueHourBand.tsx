@@ -15,7 +15,7 @@ export function BlueHourBand() {
           src={band.src}
           fallback={band.fallback}
           className="absolute inset-0 h-full w-full"
-          objectClassName="h-full w-full object-cover object-[center_42%] sm:object-[center_45%]"
+          objectClassName="absolute inset-0 h-full w-full object-cover object-[center_42%] sm:object-[center_45%]"
         />
         <div
           className="absolute inset-0"

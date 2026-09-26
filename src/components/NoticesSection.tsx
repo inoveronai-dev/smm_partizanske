@@ -32,8 +32,8 @@ export function NoticesSection() {
             <DecorativeImage
               src={ovsImage.src}
               fallback={ovsImage.fallback}
-              className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[5/3] lg:aspect-auto lg:min-h-[16.5rem] xl:min-h-[18rem]"
-              objectClassName="h-full w-full object-cover object-[center_55%]"
+              className="aspect-[16/10] w-full sm:aspect-[5/3] lg:aspect-auto lg:min-h-[16.5rem] xl:min-h-[18rem]"
+              objectClassName="absolute inset-0 h-full w-full object-cover object-[center_55%]"
             />
           </figure>
         </div>

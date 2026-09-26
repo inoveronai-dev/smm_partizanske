@@ -23,7 +23,7 @@ export function DecorativeImage({
 
   return (
     <div
-      className={className}
+      className={`relative overflow-hidden ${className ?? ""}`}
       style={{ backgroundColor: fallback }}
     >
       {!failed ? (
@@ -32,7 +32,10 @@ export function DecorativeImage({
           src={src}
           alt=""
           role="presentation"
-          className={objectClassName ?? "h-full w-full object-cover"}
+          className={
+            objectClassName ??
+            "absolute inset-0 h-full w-full object-cover"
+          }
           loading="lazy"
           decoding="async"
           onError={() => setFailed(true)}
