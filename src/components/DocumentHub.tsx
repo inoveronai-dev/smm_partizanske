@@ -1,131 +1,103 @@
 import { LATEST_NOTICE } from "@/lib/notices";
 
-type HubItem = {
+/**
+ * Compact disclosure directory.
+ * Only entries with a real destination get an external/action link.
+ * Empty categories keep nav anchors but are not presented as archives.
+ */
+type DirectoryEntry = {
   id: string;
   title: string;
-  description: string;
-  /** Optional working external link already present in the project */
-  actionHref?: string;
-  actionLabel?: string;
+  href?: string;
+  external?: boolean;
+  label?: string;
 };
 
-const DISCLOSURE_ITEMS: HubItem[] = [
+const DIRECTORY: DirectoryEntry[] = [
+  {
+    id: "volne-priestory",
+    title: "Voľné nebytové priestory",
+    href: LATEST_NOTICE.href,
+    external: true,
+    label: "Otvoriť oznam",
+  },
   {
     id: "zmluvy",
     title: "Zmluvy",
-    description:
-      "Zoznam zverejnených zmlúv bude na tomto mieste doplnený po dodaní podkladov od SMM. Dovtedy tu nájdete priamy odkaz na kontakt, ak potrebujete overiť konkrétny dokument.",
-    actionHref: "#kontakty",
-    actionLabel: "Kontaktovať SMM",
   },
   {
     id: "faktury-objednavky",
     title: "Faktúry a objednávky",
-    description:
-      "Prehľad faktúr a objednávok bude zverejnený tu, keď SMM poskytne aktuálne súbory alebo odkazy. Doplnenie neovplyvní ostatné časti stránky.",
-    actionHref: "#kontakty",
-    actionLabel: "Kontaktovať SMM",
   },
   {
     id: "vyrocne-spravy",
     title: "Výročné správy",
-    description:
-      "Výročné správy organizácie budú dostupné v tejto sekcii po ich oficiálnom dodaní.",
   },
   {
     id: "vyberove-konania",
     title: "Výberové konania",
-    description:
-      "Informácie o výberových konaniach budú zverejnené tu, keď SMM potvrdí znenie a dokumenty.",
   },
   {
     id: "legislativa",
     title: "Legislatíva",
-    description:
-      "Odkazy na záväzné predpisy a interné dokumenty budú doplnené po potvrdení zo strany SMM.",
   },
 ];
 
 export function DocumentHub() {
   return (
     <section
-      className="scroll-mt-24 bg-paper"
+      className="scroll-mt-24 bg-warm"
       aria-labelledby="zverejnovanie-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="mb-12 max-w-2xl border-b border-line pb-8">
-          <p className="section-label">Zverejňovanie</p>
-          <h2
-            id="zverejnovanie-heading"
-            className="section-heading mt-4 text-3xl sm:text-4xl"
-          >
-            Dokumenty a zverejňovanie
-          </h2>
-          <p className="mt-4 font-sans text-base leading-relaxed text-muted sm:text-lg">
-            Tieto odkazy sú pripravené v navigácii. Kde ešte nie sú dokumenty
-            dodané, uvádzame to otvorene — nevymýšľame obsah.
-          </p>
-        </div>
-
-        <div
-          id="volne-priestory"
-          className="scroll-mt-24 mb-12 border-l-[3px] border-[#2563eb] bg-warm px-6 py-8 sm:px-8"
-        >
-          <span id="prenajom-priestorov" className="sr-only">
-            Prenájom priestorov
-          </span>
-          <p className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#2563eb]">
-            Prenájom priestorov
-          </p>
-          <h3 className="mt-2 font-serif text-2xl font-semibold text-ink sm:text-3xl">
-            Voľné nebytové priestory
-          </h3>
-          <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-ink sm:text-lg">
-            Aktuálny oznam o voľných nebytových priestoroch je dostupný na
-            oficiálnej stránke SMM. Pre osobný kontakt použite telefonické alebo
-            e-mailové spojenie nižšie na stránke.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={LATEST_NOTICE.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex min-h-12 items-center justify-center px-6"
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-18">
+        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-xl">
+            <p className="section-label">Zverejňovanie</p>
+            <h2
+              id="zverejnovanie-heading"
+              className="section-heading mt-3 text-3xl sm:text-4xl"
             >
-              Otvoriť oznam o priestoroch
-            </a>
-            <a
-              href="#kontakty"
-              className="btn-secondary inline-flex min-h-12 items-center justify-center bg-surface px-6"
-            >
-              Kontaktovať SMM
-            </a>
+              Dokumenty a zverejňovanie
+            </h2>
           </div>
+          <p className="max-w-sm font-sans text-base leading-relaxed text-muted">
+            Prehľad dostupných odkazov. Pre dokumenty, ktoré ešte nie sú
+            zverejnené, použite kontakt.
+          </p>
         </div>
 
-        <ul className="divide-y divide-line border-y border-line">
-          {DISCLOSURE_ITEMS.map((item) => (
+        <span id="prenajom-priestorov" className="sr-only">
+          Prenájom priestorov
+        </span>
+
+        <ul className="divide-y divide-line border border-line bg-surface">
+          {DIRECTORY.map((item) => (
             <li
               key={item.id}
               id={item.id}
-              className="scroll-mt-24 flex flex-col gap-3 py-6 sm:flex-row sm:items-start sm:justify-between sm:gap-10"
+              className="scroll-mt-24 flex min-h-[3.75rem] items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5"
             >
-              <div className="min-w-0 max-w-2xl">
-                <h3 className="font-serif text-xl font-semibold text-ink sm:text-2xl">
-                  {item.title}
-                </h3>
-                <p className="mt-2 font-sans text-base leading-relaxed text-muted">
-                  {item.description}
-                </p>
-              </div>
-              {item.actionHref && item.actionLabel ? (
+              <span className="font-sans text-lg font-semibold text-ink sm:text-xl">
+                {item.title}
+              </span>
+              {item.href ? (
                 <a
-                  href={item.actionHref}
-                  className="shrink-0 inline-flex min-h-11 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                  href={item.href}
+                  {...(item.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="shrink-0 font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
                 >
-                  {item.actionLabel}
+                  {item.label ?? "Otvoriť"}
                 </a>
-              ) : null}
+              ) : (
+                <a
+                  href="#kontakty"
+                  className="shrink-0 font-sans text-base font-medium text-muted underline-offset-4 hover:text-[#2563eb] hover:underline"
+                >
+                  Kontakt
+                </a>
+              )}
             </li>
           ))}
         </ul>

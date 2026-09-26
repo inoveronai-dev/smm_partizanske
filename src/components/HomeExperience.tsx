@@ -1,6 +1,7 @@
 "use client";
 
 import { AboutSection } from "@/components/AboutSection";
+import { BlueHourBand } from "@/components/BlueHourBand";
 import { DocumentHub } from "@/components/DocumentHub";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
@@ -24,6 +25,7 @@ export function HomeExperience() {
         <VisualInterlude />
         <NoticesSection />
         <DocumentHub />
+        <BlueHourBand />
         <SiteFooter />
       </main>
     </>
