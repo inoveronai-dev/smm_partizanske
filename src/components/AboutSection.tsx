@@ -13,13 +13,13 @@ export function AboutSection() {
 
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
         <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
-          <figure className="order-2 lg:order-1">
-            <div className="overflow-hidden bg-navy/5">
+          <figure className="order-2 lg:order-1 lg:self-stretch">
+            <div className="h-full overflow-hidden bg-navy/5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/smm-hq-building.png"
                 alt="Sídlo Správy majetku mesta, n.o., Partizánske — Ulica 29. augusta"
-                className="aspect-[4/3] w-full object-cover object-[center_45%] lg:aspect-[5/4] lg:min-h-full"
+                className="aspect-[4/3] w-full object-cover object-[center_42%] sm:aspect-[5/4] lg:aspect-auto lg:h-full lg:min-h-[28rem]"
                 loading="lazy"
                 decoding="async"
               />

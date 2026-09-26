@@ -9,7 +9,7 @@ export function VisualInterlude() {
       <img
         src="/hero-panorama.png"
         alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[center_55%] opacity-55"
+        className="absolute inset-0 h-full w-full object-cover object-[center_52%] opacity-70"
         loading="lazy"
         decoding="async"
         aria-hidden
@@ -18,7 +18,7 @@ export function VisualInterlude() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(100deg, rgba(7,13,28,0.92) 0%, rgba(11,19,41,0.78) 45%, rgba(37,99,235,0.45) 100%)",
+            "linear-gradient(105deg, rgba(7,13,28,0.88) 0%, rgba(11,19,41,0.62) 42%, rgba(37,99,235,0.28) 100%)",
         }}
         aria-hidden
       />
