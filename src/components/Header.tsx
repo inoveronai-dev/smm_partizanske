@@ -28,7 +28,13 @@ function Chevron({ open }: { open?: boolean }) {
   );
 }
 
-function DesktopItem({ item }: { item: NavItem }) {
+function DesktopItem({
+  item,
+  solid,
+}: {
+  item: NavItem;
+  solid: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const panelId = useId();
@@ -47,11 +53,15 @@ function DesktopItem({ item }: { item: NavItem }) {
 
   useEffect(() => () => clearClose(), []);
 
+  const linkTone = solid
+    ? "text-ink hover:text-[#2563eb]"
+    : "text-cream/95 hover:text-white";
+
   if (!item.children?.length) {
     return (
       <a
         href={item.href}
-        className="font-sans text-sm font-semibold text-ink transition-colors hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+        className={`font-sans text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${linkTone}`}
       >
         {item.label}
       </a>
@@ -78,7 +88,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     >
       <button
         type="button"
-        className="inline-flex min-h-11 items-center gap-1.5 font-sans text-sm font-semibold text-ink transition-colors hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+        className={`inline-flex min-h-11 items-center gap-1.5 font-sans text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${linkTone}`}
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={panelId}
@@ -102,7 +112,7 @@ function DesktopItem({ item }: { item: NavItem }) {
             key={child.href + child.label}
             href={child.href}
             role="menuitem"
-            className="block px-4 py-3 font-sans text-base tracking-wide text-ink transition-colors hover:bg-royal-soft hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb]"
+            className="block px-4 py-3 font-sans text-base tracking-wide text-ink transition-colors hover:bg-warm hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb]"
             onClick={() => setOpen(false)}
           >
             {child.label}
@@ -172,6 +182,7 @@ function MobileItem({
 
 export function Header({ revealed = true }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [solid, setSolid] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -180,10 +191,25 @@ export function Header({ revealed = true }: HeaderProps) {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setSolid(window.scrollY > 48 || menuOpen);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [menuOpen]);
+
+  const showSolid = solid || menuOpen;
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-line bg-surface/95 backdrop-blur-md transition-[opacity,transform] duration-700 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,opacity,transform,box-shadow] duration-500 ${
         revealed ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
+      } ${
+        showSolid
+          ? "border-b border-line bg-surface/95 shadow-sm shadow-ink/5 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-4 px-5 py-2.5 sm:min-h-[4.5rem] sm:px-8 lg:px-10">
@@ -192,11 +218,19 @@ export function Header({ revealed = true }: HeaderProps) {
           className="flex shrink-0 flex-col leading-none transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
           aria-label="SMM Partizánske — domov"
         >
-          <span className="font-serif text-2xl font-bold tracking-[0.04em] text-[#2563eb] sm:text-[1.65rem]">
-            SMM Partizánske
+          <span
+            className={`font-serif text-2xl font-bold tracking-[0.04em] sm:text-[1.65rem] ${
+              showSolid ? "text-[#2563eb]" : "text-cream"
+            }`}
+          >
+            SMM
           </span>
-          <span className="mt-1 font-sans text-xs font-medium text-muted sm:text-sm">
-            Správa majetku mesta, n.o.
+          <span
+            className={`mt-1 font-sans text-xs font-medium sm:text-sm ${
+              showSolid ? "text-muted" : "text-cream/75"
+            }`}
+          >
+            Partizánske
           </span>
         </a>
 
@@ -205,13 +239,15 @@ export function Header({ revealed = true }: HeaderProps) {
           aria-label="Hlavná navigácia"
         >
           {NAV_ITEMS.map((item) => (
-            <DesktopItem key={item.label} item={item} />
+            <DesktopItem key={item.label} item={item} solid={showSolid} />
           ))}
         </nav>
 
         <button
           type="button"
-          className="relative ml-auto flex h-10 w-10 items-center justify-center text-ink lg:hidden"
+          className={`relative ml-auto flex h-10 w-10 items-center justify-center lg:hidden ${
+            showSolid ? "text-ink" : "text-cream"
+          }`}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-label={menuOpen ? "Zavrieť menu" : "Otvoriť menu"}

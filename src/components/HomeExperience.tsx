@@ -9,6 +9,7 @@ import { ObjectsSection } from "@/components/ObjectsSection";
 import { QuickAccess } from "@/components/QuickAccess";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SplashScreen } from "@/components/SplashScreen";
+import { VisualInterlude } from "@/components/VisualInterlude";
 
 export function HomeExperience() {
   return (
@@ -19,9 +20,10 @@ export function HomeExperience() {
         <Hero revealed />
         <QuickAccess revealed />
         <ObjectsSection />
+        <AboutSection />
+        <VisualInterlude />
         <NoticesSection />
         <DocumentHub />
-        <AboutSection />
         <SiteFooter />
       </main>
     </>

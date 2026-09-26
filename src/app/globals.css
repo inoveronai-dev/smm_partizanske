@@ -2,12 +2,16 @@
 
 :root {
   --paper: #fcfcfc;
+  --warm: #f7f5f1;
   --surface: #ffffff;
   --ink: #111111;
   --muted: #374151;
   --line: #e5e7eb;
   --royal: #2563eb;
   --royal-soft: #eff6ff;
+  --navy: #0b1329;
+  --navy-deep: #070d1c;
+  --cream: #f5f2eb;
   --amber: #f59e0b;
   --background: var(--paper);
   --foreground: var(--ink);
@@ -15,12 +19,16 @@
 
 @theme inline {
   --color-paper: var(--paper);
+  --color-warm: var(--warm);
   --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-royal: var(--royal);
   --color-royal-soft: var(--royal-soft);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-cream: var(--cream);
   --color-amber: var(--amber);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -58,7 +66,7 @@ body {
 }
 
 .btn-primary {
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   background: var(--royal);
   color: var(--surface);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
@@ -69,7 +77,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: var(--ink);
+  background: var(--navy);
 }
 
 .btn-primary:focus-visible {
@@ -78,15 +86,15 @@ body {
 }
 
 .btn-secondary {
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
   border: 2px solid var(--royal);
-  background: var(--surface);
+  background: transparent;
   color: var(--royal);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-secondary:hover {
@@ -97,6 +105,38 @@ body {
 .btn-secondary:focus-visible {
   outline: 2px solid var(--royal);
   outline-offset: 2px;
+}
+
+.btn-on-dark {
+  border-radius: 0.25rem;
+  background: var(--royal);
+  color: var(--surface);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease;
+}
+
+.btn-on-dark:hover {
+  background: #3b82f6;
+}
+
+.btn-ghost-on-dark {
+  border-radius: 0.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-ghost-on-dark:hover {
+  background: #fff;
+  color: var(--navy);
 }
 
 ::selection {
@@ -173,6 +213,17 @@ body {
   }
 }
 
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-splash-mark {
   animation: splash-mark-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -196,12 +247,17 @@ body {
   transform: scaleX(0);
 }
 
+.animate-photo-in {
+  animation: photo-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-splash-mark,
   .animate-splash-line,
   .animate-splash-exit,
   .animate-hero-rise,
   .animate-divider-draw,
+  .animate-photo-in,
   .splash-overlay {
     animation: none !important;
     opacity: 1 !important;

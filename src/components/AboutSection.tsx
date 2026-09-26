@@ -2,7 +2,7 @@ export function AboutSection() {
   return (
     <section
       id="o-nas"
-      className="relative scroll-mt-24 bg-paper"
+      className="relative scroll-mt-24 bg-warm"
       aria-labelledby="o-nas-heading"
     >
       <div
@@ -12,8 +12,30 @@ export function AboutSection() {
       />
 
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
-          <div>
+        <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
+          <figure className="order-2 lg:order-1">
+            <div className="overflow-hidden bg-navy/5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/smm-hq-building.png"
+                alt="Sídlo Správy majetku mesta, n.o., Partizánske — Ulica 29. augusta"
+                className="aspect-[4/3] w-full object-cover object-[center_45%] lg:aspect-[5/4] lg:min-h-full"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figcaption className="mt-4 border-l-[3px] border-[#2563eb] pl-4">
+              <span className="block font-serif text-lg font-semibold text-ink sm:text-xl">
+                Sídlo SMM Partizánske
+              </span>
+              <span className="mt-1 block font-sans text-base text-muted">
+                29. augusta 1191/51 — miesto osobného kontaktu počas stránkových
+                dní
+              </span>
+            </figcaption>
+          </figure>
+
+          <div className="order-1 flex flex-col justify-center lg:order-2">
             <p className="section-label">Organizácia</p>
             <h2
               id="o-nas-heading"
@@ -65,8 +87,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Full factual detail preserved — not deleted, only secondary on the page */}
-            <details className="mt-8 rounded-2xl border border-line bg-surface p-5 sm:p-6">
+            <details className="mt-8 border-t border-line pt-5">
               <summary className="cursor-pointer font-sans text-base font-semibold text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]">
                 Podrobnejšie o organizácii
               </summary>
@@ -85,33 +106,11 @@ export function AboutSection() {
               </div>
             </details>
           </div>
-
-          <figure className="lg:sticky lg:top-28">
-            <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/smm-hq-building.png"
-                alt="Sídlo Správy majetku mesta, n.o., Partizánske — Ulica 29. augusta"
-                className="aspect-[4/3] w-full object-cover object-center"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <figcaption className="mt-4 border-l-[3px] border-[#2563eb] pl-4">
-              <span className="block font-serif text-lg font-semibold text-ink sm:text-xl">
-                Sídlo SMM Partizánske
-              </span>
-              <span className="mt-1 block font-sans text-base text-muted">
-                29. augusta 1191/51 — miesto osobného kontaktu počas stránkových
-                dní
-              </span>
-            </figcaption>
-          </figure>
         </div>
 
         <div
           id="spravna-rada"
-          className="scroll-mt-24 mt-12 rounded-2xl border border-line bg-surface p-6 sm:p-8"
+          className="scroll-mt-24 mt-14 border-t border-line pt-10"
         >
           <h3 className="font-serif text-2xl font-semibold text-ink">
             Správna rada
@@ -127,28 +126,6 @@ export function AboutSection() {
           >
             Kontaktovať SMM
           </a>
-        </div>
-      </div>
-
-      <div className="bg-[#2563eb]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:px-8 sm:py-12 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <p className="max-w-xl font-serif text-2xl font-semibold leading-snug text-surface sm:text-3xl">
-            Potrebujete voľné priestory alebo osobný kontakt?
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#volne-priestory"
-              className="inline-flex min-h-12 items-center justify-center rounded-md bg-surface px-7 py-3.5 font-sans text-sm font-bold uppercase tracking-[0.12em] text-[#2563eb] transition-colors hover:bg-paper"
-            >
-              Voľné priestory
-            </a>
-            <a
-              href="#kontakty"
-              className="inline-flex min-h-12 items-center justify-center rounded-md border-2 border-surface px-7 py-3.5 font-sans text-sm font-bold uppercase tracking-[0.12em] text-surface transition-colors hover:bg-surface hover:text-[#2563eb]"
-            >
-              Kontaktovať SMM
-            </a>
-          </div>
         </div>
       </div>
     </section>

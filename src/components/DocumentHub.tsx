@@ -49,11 +49,11 @@ const DISCLOSURE_ITEMS: HubItem[] = [
 export function DocumentHub() {
   return (
     <section
-      className="scroll-mt-24 border-y border-line bg-surface"
+      className="scroll-mt-24 bg-paper"
       aria-labelledby="zverejnovanie-heading"
     >
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10">
-        <div className="mb-10 max-w-2xl">
+        <div className="mb-12 max-w-2xl border-b border-line pb-8">
           <p className="section-label">Zverejňovanie</p>
           <h2
             id="zverejnovanie-heading"
@@ -69,13 +69,12 @@ export function DocumentHub() {
 
         <div
           id="volne-priestory"
-          className="scroll-mt-24 mb-8 rounded-2xl border border-[#2563eb]/25 bg-royal-soft p-6 sm:p-8"
+          className="scroll-mt-24 mb-12 border-l-[3px] border-[#2563eb] bg-warm px-6 py-8 sm:px-8"
         >
-          {/* Alias for older / alternate nav labels */}
           <span id="prenajom-priestorov" className="sr-only">
             Prenájom priestorov
           </span>
-          <p className="font-sans text-sm font-bold text-[#2563eb]">
+          <p className="font-sans text-sm font-bold uppercase tracking-[0.18em] text-[#2563eb]">
             Prenájom priestorov
           </p>
           <h3 className="mt-2 font-serif text-2xl font-semibold text-ink sm:text-3xl">
@@ -97,37 +96,39 @@ export function DocumentHub() {
             </a>
             <a
               href="#kontakty"
-              className="btn-secondary inline-flex min-h-12 items-center justify-center px-6"
+              className="btn-secondary inline-flex min-h-12 items-center justify-center bg-surface px-6"
             >
               Kontaktovať SMM
             </a>
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <ul className="divide-y divide-line border-y border-line">
           {DISCLOSURE_ITEMS.map((item) => (
-            <article
+            <li
               key={item.id}
               id={item.id}
-              className="scroll-mt-24 rounded-2xl border border-line bg-paper p-6 sm:p-7"
+              className="scroll-mt-24 flex flex-col gap-3 py-6 sm:flex-row sm:items-start sm:justify-between sm:gap-10"
             >
-              <h3 className="font-serif text-xl font-semibold text-ink sm:text-2xl">
-                {item.title}
-              </h3>
-              <p className="mt-3 font-sans text-base leading-relaxed text-muted">
-                {item.description}
-              </p>
+              <div className="min-w-0 max-w-2xl">
+                <h3 className="font-serif text-xl font-semibold text-ink sm:text-2xl">
+                  {item.title}
+                </h3>
+                <p className="mt-2 font-sans text-base leading-relaxed text-muted">
+                  {item.description}
+                </p>
+              </div>
               {item.actionHref && item.actionLabel ? (
                 <a
                   href={item.actionHref}
-                  className="mt-5 inline-flex min-h-11 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                  className="shrink-0 inline-flex min-h-11 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
                 >
                   {item.actionLabel}
                 </a>
               ) : null}
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
