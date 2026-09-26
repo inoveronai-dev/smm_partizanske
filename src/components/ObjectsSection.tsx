@@ -122,9 +122,7 @@ function CategoryGalleryModal({
               {meta.title}
             </h3>
             <p className="mt-2 font-sans text-sm text-ink/70 sm:text-base">
-              {buildings.length}{" "}
-              {buildings.length === 1 ? "objekt" : "objektov"} ·{" "}
-              {meta.description}
+              Prehľad objektov zverejnených na tomto webe · {meta.description}
             </p>
           </div>
 
@@ -295,63 +293,75 @@ export function ObjectsSection() {
   return (
     <section
       id="objekty-smm"
-      className="scroll-mt-24 bg-[#fcfcfc]"
+      className="scroll-mt-24 bg-royal-soft/40"
       aria-labelledby="objekty-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
-        <div className="mb-12 max-w-2xl sm:mb-14">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+        <div className="mb-8 max-w-2xl sm:mb-10">
           <p className="section-label">Spravujeme</p>
           <h2
             id="objekty-heading"
-            className="section-heading mt-5 text-3xl sm:text-4xl md:text-5xl"
+            className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl"
           >
             Objekty SMM
           </h2>
-          <p className="mt-5 max-w-xl font-sans text-lg leading-relaxed text-ink">
-            Kliknite na{" "}
-            <span className="font-semibold text-[#2563eb]">Zobraziť</span> a
-            otvorí sa prehľad objektov v elegantnom okne — bez zbytočného
-            scrollovania stránky.
+          <p className="mt-4 max-w-2xl font-sans text-lg leading-relaxed text-ink">
+            Prehliadnite bytové a nebytové objekty zverejnené v tomto prehľade —
+            adresy, fotografie a bližšie informácie. Otvorením kategórie
+            zobrazíte zoznam bez nutnosti dlhého scrollovania stránky.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2" aria-label="Kategórie objektov">
+        <div
+          className="grid gap-5 lg:grid-cols-2"
+          aria-label="Kategórie objektov"
+        >
           {CATEGORIES.map((key) => {
             const meta = CATEGORY_META[key];
-            const count = BUILDINGS.filter(
-              (item) => item.category === key,
-            ).length;
+            const lead = BUILDINGS.find((item) => item.category === key);
             const isOpen = openCategory === key;
 
             return (
-              <div
+              <article
                 key={key}
-                className={`flex flex-col items-start rounded-2xl border bg-surface p-6 text-left shadow-sm shadow-ink/5 transition-[border-color,box-shadow] duration-300 sm:p-8 ${
+                className={`overflow-hidden rounded-2xl border bg-surface transition-[border-color,box-shadow] duration-200 ${
                   isOpen
                     ? "border-[#2563eb] shadow-md shadow-[#2563eb]/15"
-                    : "border-line hover:border-[#2563eb]/40"
+                    : "border-line shadow-sm shadow-ink/5 hover:border-[#2563eb]/50"
                 }`}
               >
-                <span className="font-sans text-xs font-bold uppercase tracking-[0.22em] text-[#2563eb]">
-                  {count} objektov
-                </span>
-                <h3 className="mt-3 font-serif text-2xl font-semibold text-ink sm:text-3xl">
-                  {meta.title}
-                </h3>
-                <p className="mt-2 font-sans text-base leading-relaxed text-ink/70">
-                  {meta.description}
-                </p>
-                <button
-                  type="button"
-                  className="mt-6 inline-flex min-h-12 items-center justify-center rounded-md bg-[#2563eb] px-7 py-3 font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-ink"
-                  onClick={() => {
-                    setSelectedBuilding(null);
-                    setOpenCategory(key);
-                  }}
-                >
-                  Zobraziť
-                </button>
-              </div>
+                {lead ? (
+                  <div className="relative aspect-[16/10] overflow-hidden bg-royal-soft">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={lead.image}
+                      alt={lead.imageAlt}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ) : null}
+                <div className="flex flex-col items-start p-6 sm:p-7">
+                  <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
+                    {meta.title}
+                  </h3>
+                  <p className="mt-2 font-sans text-base leading-relaxed text-muted sm:text-lg">
+                    {meta.description}. V prehľade nájdete adresy a fotografie
+                    objektov zverejnených na tomto webe.
+                  </p>
+                  <button
+                    type="button"
+                    className="btn-primary mt-5 inline-flex min-h-12 items-center justify-center px-7"
+                    onClick={() => {
+                      setSelectedBuilding(null);
+                      setOpenCategory(key);
+                    }}
+                  >
+                    Zobraziť prehľad
+                  </button>
+                </div>
+              </article>
             );
           })}
         </div>

@@ -1,79 +1,37 @@
-const NOTICES = [
-  {
-    date: "01. 06. 2026",
-    title: "Voľné nebytové priestory",
-    href: "https://smmpartizanske.sk/index.php/2026/06/01/volne-nebytove-priestory/",
-  },
-  {
-    date: "03. 03. 2026",
-    title: "Kultúrny dom SC Malé Bielice – uzatvorený",
-    href: "https://smmpartizanske.sk/index.php/2026/03/03/kulturny-dom-sc-male-bielice-uzatvoreny/",
-  },
-  {
-    date: "16. 01. 2026",
-    title: "Cenník údržby a dopravy od 1.1.2026",
-    href: "https://smmpartizanske.sk/index.php/2026/01/16/cennik-udrzby-a-dopravy-od-1-1-2026/",
-  },
-] as const;
-
-const OVS_ITEMS = [
-  {
-    date: "10. 03. 2026",
-    title: "DS – LUHY Nádražná",
-    category: "Prenájom",
-    href: "#aktualne-ovs",
-  },
-  {
-    date: "03. 03. 2026",
-    title: "Rudolfa Jašíka",
-    category: "OVS",
-    href: "#aktualne-ovs",
-  },
-  {
-    date: "21. 02. 2026",
-    title: "DS-ALFA",
-    category: "Prenájom",
-    href: "#aktualne-ovs",
-  },
-] as const;
-
-function ListHeader({ title, href }: { title: string; href: string }) {
-  return (
-    <div className="flex items-end justify-between gap-4 border-b border-line pb-5">
-      <h3 className="font-serif text-2xl font-semibold tracking-wide text-ink sm:text-3xl">
-        {title}
-      </h3>
-      <a
-        href={href}
-        className="shrink-0 font-sans text-xs font-bold uppercase tracking-[0.2em] text-[#2563eb] transition-colors hover:text-ink"
-      >
-        Zobraziť všetko
-      </a>
-    </div>
-  );
-}
+import { NOTICES, OVS_ITEMS } from "@/lib/notices";
 
 export function NoticesSection() {
   return (
     <section
       id="oznamenia"
-      className="scroll-mt-24 bg-[#fcfcfc]"
+      className="scroll-mt-24 bg-paper"
       aria-labelledby="oznamenia-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
-        <div className="mb-14 max-w-2xl">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+        <div className="mb-10 max-w-2xl">
           <p className="section-label">Aktuálne informácie</p>
           <h2
             id="oznamenia-heading"
-            className="section-heading mt-5 text-3xl sm:text-4xl md:text-5xl"
+            className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl"
           >
-            Oznámenia a najnovšie OVS
+            Oznámenia a OVS
           </h2>
+          <p className="mt-4 font-sans text-lg leading-relaxed text-muted">
+            Dátumy a názvy sú uvedené veľkým, čitateľným písmom. Oznamy otvárajú
+            oficiálne stránky; OVS nižšie sú zoznamom z tohto projektu.
+          </p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
-          <div className="rounded-2xl border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8">
-            <ListHeader title="Oznámenia" href="#oznamenia" />
+          <div className="rounded-2xl border border-line bg-surface p-6 sm:p-8">
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-line pb-5">
+              <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
+                Oznámenia
+              </h3>
+              <span className="font-sans text-sm text-muted">
+                {NOTICES.length} položiek v prehľade
+              </span>
+            </div>
             <ul className="divide-y divide-line">
               {NOTICES.map((item) => (
                 <li key={item.title}>
@@ -81,12 +39,12 @@ export function NoticesSection() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex flex-col gap-2 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                    className="group flex flex-col gap-1 py-5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                   >
-                    <span className="font-sans text-base font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-lg">
+                    <span className="font-sans text-lg font-medium text-ink transition-colors group-hover:text-[#2563eb]">
                       {item.title}
                     </span>
-                    <time className="shrink-0 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb]">
+                    <time className="shrink-0 font-sans text-base font-semibold text-[#2563eb]">
                       {item.date}
                     </time>
                   </a>
@@ -97,32 +55,79 @@ export function NoticesSection() {
 
           <div
             id="aktualne-ovs"
-            className="scroll-mt-24 rounded-2xl border border-line bg-surface p-6 shadow-sm shadow-ink/5 sm:p-8"
+            className="scroll-mt-24 rounded-2xl border border-line bg-surface p-6 sm:p-8"
           >
-            <ListHeader title="Najnovšie OVS" href="#aktualne-ovs" />
+            <div className="border-b border-line pb-5">
+              <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
+                Najnovšie OVS
+              </h3>
+              <p className="mt-2 font-sans text-base text-muted">
+                Textový prehľad — fotografie nepriraďujeme bez overenia
+                objektu.
+              </p>
+            </div>
             <ul className="divide-y divide-line">
               {OVS_ITEMS.map((item) => (
-                <li key={item.title}>
-                  <a
-                    href={item.href}
-                    className="group flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
-                  >
-                    <span className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
-                      <span className="inline-flex w-fit rounded-md bg-royal-soft px-2.5 py-1 font-sans text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[#2563eb]">
-                        {item.category}
-                      </span>
-                      <span className="font-sans text-base font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-lg">
-                        {item.title}
-                      </span>
-                    </span>
-                    <time className="shrink-0 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb]">
-                      {item.date}
-                    </time>
-                  </a>
+                <li
+                  key={item.title}
+                  className="flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+                >
+                  <div className="min-w-0">
+                    <p className="font-sans text-sm font-semibold text-[#2563eb]">
+                      {item.category}
+                    </p>
+                    <p className="mt-1 font-sans text-lg font-medium text-ink">
+                      {item.title}
+                    </p>
+                  </div>
+                  <time className="shrink-0 font-sans text-base font-semibold text-muted">
+                    {item.date}
+                  </time>
                 </li>
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <article
+            id="archiv-ovs"
+            className="scroll-mt-24 rounded-2xl border border-line bg-surface p-6 sm:p-7"
+          >
+            <h3 className="font-serif text-xl font-semibold text-ink sm:text-2xl">
+              Archív OVS
+            </h3>
+            <p className="mt-3 font-sans text-base leading-relaxed text-muted">
+              Kompletný archív obchodných verejných súťaží bude na tomto mieste
+              doplnený po dodaní podkladov od SMM. Aktuálne položky sú vyššie v
+              sekcii Najnovšie OVS.
+            </p>
+            <a
+              href="#aktualne-ovs"
+              className="mt-4 inline-flex min-h-11 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline"
+            >
+              Prejsť na aktuálne OVS
+            </a>
+          </article>
+
+          <article
+            id="protokoly"
+            className="scroll-mt-24 rounded-2xl border border-line bg-surface p-6 sm:p-7"
+          >
+            <h3 className="font-serif text-xl font-semibold text-ink sm:text-2xl">
+              Protokoly
+            </h3>
+            <p className="mt-3 font-sans text-base leading-relaxed text-muted">
+              Protokoly z OVS budú zverejnené tu, keď SMM poskytne oficiálne
+              dokumenty. Doplnenie nevymýšľame vopred.
+            </p>
+            <a
+              href="#kontakty"
+              className="mt-4 inline-flex min-h-11 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline"
+            >
+              Kontaktovať SMM
+            </a>
+          </article>
         </div>
       </div>
     </section>

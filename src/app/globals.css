@@ -52,9 +52,51 @@ body {
 .section-heading {
   font-family: var(--font-serif), ui-serif, Georgia, serif;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--ink);
-  line-height: 1.1;
+  line-height: 1.15;
+}
+
+.btn-primary {
+  border-radius: 0.375rem;
+  background: var(--royal);
+  color: var(--surface);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--ink);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--royal);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  border-radius: 0.375rem;
+  border: 2px solid var(--royal);
+  background: var(--surface);
+  color: var(--royal);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--royal);
+  color: var(--surface);
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--royal);
+  outline-offset: 2px;
 }
 
 ::selection {
@@ -131,15 +173,6 @@ body {
   }
 }
 
-@keyframes ticker-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .animate-splash-mark {
   animation: splash-mark-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -163,17 +196,12 @@ body {
   transform: scaleX(0);
 }
 
-.animate-ticker-scroll {
-  animation: ticker-scroll 28s linear infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .animate-splash-mark,
   .animate-splash-line,
   .animate-splash-exit,
   .animate-hero-rise,
   .animate-divider-draw,
-  .animate-ticker-scroll,
   .splash-overlay {
     animation: none !important;
     opacity: 1 !important;

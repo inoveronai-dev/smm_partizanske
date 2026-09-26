@@ -51,7 +51,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     return (
       <a
         href={item.href}
-        className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:text-[#2563eb]"
+        className="font-sans text-sm font-semibold text-ink transition-colors hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
       >
         {item.label}
       </a>
@@ -78,7 +78,7 @@ function DesktopItem({ item }: { item: NavItem }) {
     >
       <button
         type="button"
-        className="inline-flex items-center gap-1.5 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:text-[#2563eb]"
+        className="inline-flex min-h-11 items-center gap-1.5 font-sans text-sm font-semibold text-ink transition-colors hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={panelId}
@@ -102,7 +102,7 @@ function DesktopItem({ item }: { item: NavItem }) {
             key={child.href + child.label}
             href={child.href}
             role="menuitem"
-            className="block px-4 py-3 font-sans text-sm tracking-wide text-ink transition-colors hover:bg-royal-soft hover:text-[#2563eb]"
+            className="block px-4 py-3 font-sans text-base tracking-wide text-ink transition-colors hover:bg-royal-soft hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb]"
             onClick={() => setOpen(false)}
           >
             {child.label}
@@ -127,7 +127,7 @@ function MobileItem({
     return (
       <a
         href={item.href}
-        className="py-3 font-sans text-sm font-medium uppercase tracking-[0.2em] text-ink/80 transition-colors hover:text-royal"
+        className="py-3.5 font-sans text-base font-semibold text-ink transition-colors hover:text-[#2563eb]"
         onClick={onNavigate}
       >
         {item.label}
@@ -139,7 +139,7 @@ function MobileItem({
     <div className="border-b border-line last:border-b-0">
       <button
         type="button"
-        className="flex w-full items-center justify-between py-3 font-sans text-sm font-medium uppercase tracking-[0.2em] text-ink/80"
+        className="flex min-h-12 w-full items-center justify-between py-3.5 font-sans text-base font-semibold text-ink"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
@@ -158,7 +158,7 @@ function MobileItem({
             <a
               key={child.href + child.label}
               href={child.href}
-              className="py-2 font-sans text-sm tracking-wide text-muted transition-colors hover:text-royal"
+              className="py-2.5 font-sans text-base tracking-wide text-muted transition-colors hover:text-[#2563eb]"
               onClick={onNavigate}
             >
               {child.label}
@@ -186,17 +186,17 @@ export function Header({ revealed = true }: HeaderProps) {
         revealed ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 sm:h-[4.25rem] sm:px-8 lg:px-10">
+      <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-4 px-5 py-2.5 sm:min-h-[4.5rem] sm:px-8 lg:px-10">
         <a
           href="#top"
-          className="flex shrink-0 items-baseline gap-2.5 transition-opacity hover:opacity-90"
+          className="flex shrink-0 flex-col leading-none transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
           aria-label="SMM Partizánske — domov"
         >
-          <span className="font-serif text-xl font-bold tracking-[0.12em] text-[#2563eb] sm:text-2xl">
-            SMM
+          <span className="font-serif text-2xl font-bold tracking-[0.04em] text-[#2563eb] sm:text-[1.65rem]">
+            SMM Partizánske
           </span>
-          <span className="font-sans text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-ink sm:text-[0.7rem]">
-            Partizánske
+          <span className="mt-1 font-sans text-xs font-medium text-muted sm:text-sm">
+            Správa majetku mesta, n.o.
           </span>
         </a>
 

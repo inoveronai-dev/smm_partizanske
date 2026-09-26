@@ -6,6 +6,10 @@ export type NavItem = {
   children?: NavChild[];
 };
 
+/**
+ * Every href must land on a visible section with real content or an honest
+ * pending-content panel. Dodávatelia is intentionally absent until SMM provides it.
+ */
 export const NAV_ITEMS: NavItem[] = [
   {
     label: "O nás",
@@ -22,7 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "#objekty-smm",
     children: [
       { label: "Objekty SMM", href: "#objekty-smm" },
-      { label: "Prenájom priestorov", href: "#prenajom-priestorov" },
+      { label: "Prenájom priestorov", href: "#volne-priestory" },
     ],
   },
   {
@@ -46,6 +50,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Kontakty", href: "#kontakty" },
 ];
 
+/** Anchors that have dedicated visible sections (used for scroll targets). */
 export const SECTION_ANCHORS = [
   "o-organizacii",
   "kontakty",
@@ -62,4 +67,5 @@ export const SECTION_ANCHORS = [
   "legislativa",
   "oznamenia",
   "volne-priestory",
+  "kde-nas-najdete",
 ] as const;

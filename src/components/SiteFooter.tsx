@@ -9,6 +9,11 @@ const OFFICE_ADDRESS = {
   city: "958 01 Partizánske",
 } as const;
 
+/**
+ * Office hours as currently stored in this project only.
+ * These values differ from the live smmpartizanske.sk footer — do not “correct”
+ * them from the live site without SMM confirmation.
+ */
 const OFFICE_HOURS = [
   {
     title: "Vlastnícke a nájomné byty",
@@ -37,7 +42,7 @@ export function SiteFooter() {
       className="scroll-mt-24 border-t border-line bg-[#fcfcfc]"
       aria-labelledby="kontakty-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28 lg:px-10 lg:py-32">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
         {/* Kde nás nájdete + mapa */}
         <section
           id="kde-nas-najdete"
@@ -127,10 +132,10 @@ export function SiteFooter() {
                       key={row.day}
                       className="flex flex-col gap-1 border-t border-line pt-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
                     >
-                      <span className="font-sans text-sm font-semibold uppercase tracking-[0.14em] text-ink">
+                      <span className="font-sans text-base font-semibold text-ink">
                         {row.day}
                       </span>
-                      <span className="font-sans text-base text-ink sm:text-right">
+                      <span className="font-sans text-lg text-ink sm:text-right">
                         {row.hours}
                       </span>
                     </li>
@@ -192,14 +197,12 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="overflow-hidden border-t border-line bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 lg:px-10">
-          <p className="select-none font-serif text-[clamp(1.4rem,5.5vw,4.25rem)] leading-none tracking-[0.04em] text-ink/[0.06]">
+      <div className="border-t border-line bg-surface">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 sm:flex-row sm:items-baseline sm:justify-between sm:px-8 lg:px-10">
+          <p className="font-serif text-lg font-semibold text-ink sm:text-xl">
             Správa majetku mesta, n.o., Partizánske
           </p>
-          <p className="mt-5 font-sans text-[0.65rem] uppercase tracking-[0.28em] text-muted">
-            © 2025 / 2026
-          </p>
+          <p className="font-sans text-sm text-muted">© 2025 / 2026</p>
         </div>
       </div>
     </footer>
