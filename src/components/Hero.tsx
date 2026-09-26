@@ -69,18 +69,9 @@ export function Hero({ revealed = true }: HeroProps) {
   );
 }
 
-function HeroCopy({
-  revealed,
-  align = "center",
-}: {
-  revealed: boolean;
-  align?: "left" | "center";
-}) {
-  const alignClass =
-    align === "left" ? "items-start text-left" : "items-start text-left";
-
+function HeroCopy({ revealed }: { revealed: boolean; align?: "left" | "center" }) {
   return (
-    <div className={`flex flex-col ${alignClass}`}>
+    <div className="flex flex-col items-start text-left">
       <p
         className={`font-sans text-sm font-bold tracking-[0.08em] text-[#2563eb] sm:text-base ${
           revealed ? "animate-hero-rise" : "opacity-0"

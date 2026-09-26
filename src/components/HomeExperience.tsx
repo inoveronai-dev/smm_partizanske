@@ -20,8 +20,8 @@ export function HomeExperience() {
         <QuickAccess revealed />
         <ObjectsSection />
         <NoticesSection />
-        <AboutSection />
         <DocumentHub />
+        <AboutSection />
         <SiteFooter />
       </main>
     </>
