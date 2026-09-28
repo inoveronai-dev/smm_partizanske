@@ -11,8 +11,8 @@ export function AboutSection() {
         aria-hidden
       />
 
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-18">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
           <figure className="order-2 lg:order-1">
             <div className="overflow-hidden bg-navy/5">
               {/* eslint-disable-next-line @next/next/no-img-element */}

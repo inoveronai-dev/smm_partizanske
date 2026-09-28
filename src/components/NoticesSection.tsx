@@ -7,32 +7,26 @@ export function NoticesSection() {
       className="scroll-mt-24 bg-surface"
       aria-labelledby="oznamenia-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <div className="border-b border-line pb-8">
+      <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
+        <div className="mb-7 max-w-2xl">
           <p className="section-label">Aktuálne informácie</p>
           <h2
             id="oznamenia-heading"
-            className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl"
+            className="section-heading mt-3 text-3xl sm:text-4xl"
           >
             Oznámenia a OVS
           </h2>
-          <span className="mt-5 block h-0.5 w-14 bg-[#2563eb]" aria-hidden />
-          <p className="mt-5 max-w-2xl font-sans text-lg leading-relaxed text-muted">
-            Aktuálne oznámenia pre občanov a najnovšie obchodné verejné súťaže
-            SMM Partizánske.
+          <span className="mt-4 block h-0.5 w-14 bg-[#2563eb]" aria-hidden />
+          <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-muted">
+            Oznámenia pre občanov a obchodné verejné súťaže SMM Partizánske.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-10 lg:mt-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
-            <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-ink/15 pb-4">
-              <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
-                Oznámenia
-              </h3>
-              <span className="font-sans text-sm text-muted">
-                {NOTICES.length} položiek
-              </span>
-            </div>
+            <h3 className="border-b border-ink/15 pb-3 font-serif text-2xl font-semibold text-ink">
+              Oznámenia
+            </h3>
             <ul>
               {NOTICES.map((item) => (
                 <li key={item.title} className="border-b border-line">
@@ -40,12 +34,12 @@ export function NoticesSection() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex min-h-[4.5rem] flex-col justify-center gap-1.5 py-5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+                    className="group flex min-h-[4rem] items-baseline justify-between gap-4 py-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
                   >
-                    <span className="font-sans text-lg font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-xl">
+                    <span className="font-sans text-base font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-lg">
                       {item.title}
                     </span>
-                    <time className="shrink-0 font-sans text-base font-semibold tabular-nums text-[#2563eb] sm:text-lg">
+                    <time className="shrink-0 font-sans text-sm font-semibold tabular-nums text-muted sm:text-base">
                       {item.date}
                     </time>
                   </a>
@@ -55,26 +49,26 @@ export function NoticesSection() {
           </div>
 
           <div id="aktualne-ovs" className="scroll-mt-24">
-            <div className="border-b border-ink/15 pb-4">
-              <h3 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">
-                Najnovšie OVS
-              </h3>
-            </div>
+            <h3 className="border-b border-ink/15 pb-3 font-serif text-2xl font-semibold text-ink">
+              Najnovšie OVS
+            </h3>
             <ul>
               {OVS_ITEMS.map((item) => (
                 <li
                   key={item.title}
-                  className="flex min-h-[4.5rem] flex-col justify-center gap-2 border-b border-line py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+                  className="flex min-h-[4rem] items-baseline justify-between gap-4 border-b border-line py-4"
                 >
                   <div className="min-w-0">
-                    <p className="font-sans text-sm font-semibold text-[#2563eb]">
-                      {item.category}
-                    </p>
-                    <p className="mt-1 font-sans text-lg font-medium text-ink sm:text-xl">
+                    <span className="font-sans text-base font-medium text-ink sm:text-lg">
                       {item.title}
-                    </p>
+                    </span>
+                    {item.category !== "OVS" ? (
+                      <span className="mt-0.5 block font-sans text-sm text-muted">
+                        {item.category}
+                      </span>
+                    ) : null}
                   </div>
-                  <time className="shrink-0 font-sans text-base font-semibold tabular-nums text-ink sm:text-lg">
+                  <time className="shrink-0 font-sans text-sm font-semibold tabular-nums text-muted sm:text-base">
                     {item.date}
                   </time>
                 </li>
@@ -83,7 +77,7 @@ export function NoticesSection() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-7 text-base">
+        <div className="mt-7 flex flex-wrap gap-x-8 gap-y-2 border-t border-line pt-5 text-base">
           <a
             id="archiv-ovs"
             href="#kontakty"

@@ -23,7 +23,7 @@ export function VisualInterlude() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col justify-center px-5 py-16 sm:px-8 sm:py-20 lg:min-h-[22rem] lg:px-10 lg:py-24">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col justify-center px-5 py-12 sm:px-8 sm:py-14 lg:min-h-[16rem] lg:px-10 lg:py-16">
         <p className="font-sans text-xs font-bold tracking-[0.28em] text-[#93c5fd]">
           SPRÁVA MAJETKU MESTA
         </p>

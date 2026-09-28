@@ -10,7 +10,7 @@ export function BlueHourBand() {
 
   return (
     <section aria-label="Vizuálny prechod" className="relative w-full overflow-hidden">
-      <div className="relative h-[22rem] w-full sm:h-[26rem] lg:h-[28rem] xl:h-[30rem]">
+      <div className="relative h-[16rem] w-full sm:h-[18rem] lg:h-[20rem] xl:h-[22rem]">
         <DecorativeImage
           src={band.src}
           fallback={band.fallback}
@@ -25,8 +25,8 @@ export function BlueHourBand() {
           }}
           aria-hidden
         />
-        <div className="relative z-10 flex h-full max-w-6xl items-end px-5 pb-10 sm:px-8 sm:pb-12 lg:px-10 lg:pb-14">
-          <p className="max-w-md font-serif text-2xl font-semibold leading-snug text-cream sm:text-3xl">
+        <div className="relative z-10 flex h-full max-w-6xl items-end px-5 pb-8 sm:px-8 sm:pb-9 lg:px-10 lg:pb-10">
+          <p className="max-w-md font-serif text-xl font-semibold leading-snug text-cream sm:text-2xl">
             Správa majetku s dôrazom na poriadok a dostupnosť.
           </p>
         </div>

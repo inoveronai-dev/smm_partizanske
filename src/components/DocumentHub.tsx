@@ -1,57 +1,38 @@
 import { LATEST_NOTICE } from "@/lib/notices";
 
 /**
- * Compact disclosure directory.
- * Only entries with a real destination get an external/action link.
- * Empty categories keep nav anchors but are not presented as archives.
+ * Compact disclosure section.
+ * Unavailable categories remain as scroll anchors for nav — not empty archive rows.
  */
-type DirectoryEntry = {
-  id: string;
-  title: string;
-  href?: string;
-  external?: boolean;
-  label?: string;
-};
-
-const DIRECTORY: DirectoryEntry[] = [
-  {
-    id: "volne-priestory",
-    title: "Voľné nebytové priestory",
-    href: LATEST_NOTICE.href,
-    external: true,
-    label: "Otvoriť oznam",
-  },
-  {
-    id: "zmluvy",
-    title: "Zmluvy",
-  },
-  {
-    id: "faktury-objednavky",
-    title: "Faktúry a objednávky",
-  },
-  {
-    id: "vyrocne-spravy",
-    title: "Výročné správy",
-  },
-  {
-    id: "vyberove-konania",
-    title: "Výberové konania",
-  },
-  {
-    id: "legislativa",
-    title: "Legislatíva",
-  },
-];
+const PENDING_IDS = [
+  "zmluvy",
+  "faktury-objednavky",
+  "vyrocne-spravy",
+  "vyberove-konania",
+  "legislativa",
+] as const;
 
 export function DocumentHub() {
   return (
     <section
-      className="scroll-mt-24 bg-warm"
+      className="scroll-mt-24 border-t border-line bg-warm"
       aria-labelledby="zverejnovanie-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-18">
-        <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-xl">
+      <div className="relative mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
+        {PENDING_IDS.map((id) => (
+          <span
+            key={id}
+            id={id}
+            className="pointer-events-none absolute -top-24"
+            aria-hidden
+          />
+        ))}
+        <span id="prenajom-priestorov" className="sr-only">
+          Prenájom priestorov
+        </span>
+
+        <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
             <p className="section-label">Zverejňovanie</p>
             <h2
               id="zverejnovanie-heading"
@@ -59,57 +40,50 @@ export function DocumentHub() {
             >
               Dokumenty a zverejňovanie
             </h2>
+            <span className="mt-4 block h-0.5 w-14 bg-[#2563eb]" aria-hidden />
+            <p className="mt-4 font-sans text-base leading-relaxed text-muted">
+              Na stránke je dostupný oznam o voľných nebytových priestoroch.
+              Ostatné dokumenty (zmluvy, faktúry, výročné správy, výberové
+              konania, legislatíva) zatiaľ nie sú zverejnené — môžete o ne
+              požiadať.
+            </p>
           </div>
-          <p className="max-w-sm font-sans text-base leading-relaxed text-muted">
-            Dostupný je aktuálny oznam o voľných priestoroch. Ostatné dokumenty
-            zatiaľ nie sú na stránke zverejnené — môžete o ne požiadať
-            kontaktom.
-          </p>
-        </div>
 
-        <span id="prenajom-priestorov" className="sr-only">
-          Prenájom priestorov
-        </span>
-
-        <ul className="divide-y divide-line border border-line bg-surface">
-          {DIRECTORY.map((item) => (
-            <li
-              key={item.id}
-              id={item.id}
-              className="scroll-mt-24 flex min-h-[3.75rem] items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5"
+          <div className="flex flex-col gap-5 lg:col-span-7">
+            <div
+              id="volne-priestory"
+              className="scroll-mt-24 flex flex-col gap-3 border-l-[3px] border-[#2563eb] pl-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:pl-5"
             >
-              <span className="font-sans text-lg font-semibold text-ink sm:text-xl">
-                {item.title}
-              </span>
-              {item.href ? (
-                <a
-                  href={item.href}
-                  {...(item.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="shrink-0 font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
-                >
-                  {item.label ?? "Otvoriť"}
-                </a>
-              ) : (
-                <span className="shrink-0 font-sans text-base font-medium text-muted">
-                  Zatiaľ nezverejnené
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
+              <div className="min-w-0">
+                <p className="font-sans text-lg font-semibold text-ink sm:text-xl">
+                  Voľné nebytové priestory
+                </p>
+                <p className="mt-1 font-sans text-sm text-muted sm:text-base">
+                  Oznam o ponuke na prenájom
+                </p>
+              </div>
+              <a
+                href={LATEST_NOTICE.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 shrink-0 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+              >
+                Otvoriť oznam
+              </a>
+            </div>
 
-        <div className="mt-6 flex flex-col gap-3 border border-line bg-surface px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="font-sans text-base leading-relaxed text-muted">
-            Potrebujete zmluvu, faktúru, výročnú správu alebo iný dokument?
-          </p>
-          <a
-            href="#kontakty"
-            className="inline-flex min-h-11 shrink-0 items-center justify-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
-          >
-            Požiadať o dokument
-          </a>
+            <div className="flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+              <p className="font-sans text-base leading-relaxed text-muted">
+                Potrebujete iný dokument?
+              </p>
+              <a
+                href="#kontakty"
+                className="inline-flex min-h-11 shrink-0 items-center justify-center bg-[#2563eb] px-5 py-2.5 font-sans text-sm font-bold tracking-[0.02em] text-surface transition-colors hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+              >
+                Požiadať o dokument
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
