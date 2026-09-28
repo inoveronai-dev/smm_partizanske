@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BlueHourBand } from "@/components/BlueHourBand";
 import { MapPreview } from "@/components/MapPreview";
 
 const MAP_EMBED_SRC =
@@ -40,77 +41,16 @@ const OFFICE_HOURS = [
 
 export function SiteFooter() {
   return (
-    <footer id="kontakty" className="scroll-mt-24" aria-labelledby="kontakty-heading">
-      {/* Navy contact — heading left, actions right */}
-      <section
-        className="relative overflow-hidden bg-navy-deep"
-        aria-labelledby="kontakty-heading"
-      >
-        <div
-          className="absolute inset-0 opacity-35"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 80% at 90% 30%, rgba(37,99,235,0.32), transparent 55%)",
-          }}
-          aria-hidden
-        />
-        <div className="relative z-10 mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 sm:py-16 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-10 lg:py-18">
-          <div>
-            <p className="font-sans text-xs font-bold tracking-[0.28em] text-[#93c5fd]">
-              KONTAKT
-            </p>
-            <h2
-              id="kontakty-heading"
-              className="mt-3 font-serif text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-[1.1] text-cream"
-            >
-              Sme tu pre vás
-            </h2>
-            <p className="mt-4 max-w-md font-sans text-base leading-relaxed text-cream/75 sm:text-lg">
-              Správa majetku mesta, n.o., Partizánske — osobný kontakt počas
-              stránkových dní.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-7">
-            <div>
-              <p className="font-sans text-sm font-semibold uppercase tracking-[0.18em] text-[#93c5fd]">
-                E-mail
-              </p>
-              <a
-                href="mailto:sekretariat@smmpartizanske.sk"
-                className="mt-2 block min-h-11 font-sans text-xl font-semibold leading-snug text-cream underline-offset-4 transition-colors hover:text-white hover:underline sm:text-2xl"
-              >
-                sekretariat@smmpartizanske.sk
-              </a>
-            </div>
-            <div>
-              <p className="font-sans text-sm font-semibold uppercase tracking-[0.18em] text-[#93c5fd]">
-                Telefón
-              </p>
-              <a
-                href="tel:+421382851711"
-                className="mt-2 inline-flex min-h-12 items-center font-sans text-xl font-semibold leading-snug text-cream underline-offset-4 transition-colors hover:text-white hover:underline sm:text-2xl"
-              >
-                038 / 28 517 11
-              </a>
-            </div>
-            <a
-              href="mailto:sekretariat@smmpartizanske.sk"
-              className="btn-on-dark inline-flex min-h-12 w-full items-center justify-center px-7 py-3.5 sm:w-auto sm:self-start"
-            >
-              Napísať SMM
-            </a>
-          </div>
-        </div>
-      </section>
+    <footer>
+      <BlueHourBand />
 
       {/* Map-dominant location + hours */}
       <section
         id="kde-nas-najdete"
-        className="scroll-mt-24 bg-paper"
+        className="relative z-0 scroll-mt-24 bg-paper"
         aria-labelledby="mapa-heading"
       >
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-14 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-6xl px-5 pb-12 pt-6 sm:px-8 sm:pb-14 sm:pt-8 lg:px-10 lg:pb-16 lg:pt-10">
           <div className="mb-6 flex flex-col gap-2 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="section-label">Lokácia</p>
@@ -146,7 +86,7 @@ export function SiteFooter() {
                 href={MAP_EXTERNAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center rounded-sm bg-[#2563eb] px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-navy"
+                className="inline-flex min-h-12 items-center justify-center rounded-sm bg-[#2563eb] px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
               >
                 Navigovať
               </a>
@@ -207,7 +147,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-6">
             <Link
               href="/#top"
-              className="font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline"
+              className="font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
             >
               Návrat hore
             </Link>

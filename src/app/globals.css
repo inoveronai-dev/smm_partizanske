@@ -270,6 +270,25 @@ body {
   animation-play-state: paused;
 }
 
+/* Contact photo: calm fixed background on capable desktop pointers only.
+   No filter here — filter breaks background-attachment: fixed in several browsers. */
+.contact-photo-parallax {
+  background-image: url("/images/buildings-blue-hour.webp");
+  background-size: cover;
+  background-position: center 42%;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 1024px) {
+  @media (hover: hover) and (pointer: fine) {
+    @media (prefers-reduced-motion: no-preference) {
+      .contact-photo-parallax {
+        background-attachment: fixed;
+      }
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-splash-mark,
   .animate-splash-line,
@@ -290,5 +309,9 @@ body {
 
   .splash-overlay {
     display: none !important;
+  }
+
+  .contact-photo-parallax {
+    background-attachment: scroll !important;
   }
 }
