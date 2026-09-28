@@ -1,7 +1,6 @@
 "use client";
 
 import { AboutSection } from "@/components/AboutSection";
-import { DocumentHub } from "@/components/DocumentHub";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { NoticesCarousel } from "@/components/NoticesCarousel";
@@ -23,7 +22,6 @@ export function HomeExperience() {
         <AboutSection />
         <VisualInterlude />
         <NoticesCarousel />
-        <DocumentHub />
         <SiteFooter />
       </main>
     </>

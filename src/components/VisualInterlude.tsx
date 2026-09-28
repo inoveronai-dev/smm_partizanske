@@ -35,7 +35,7 @@ export function VisualInterlude() {
         </h2>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
-            href="#volne-priestory"
+            href="/oznamy"
             className="btn-on-dark inline-flex min-h-12 items-center justify-center px-7 py-3.5"
           >
             Voľné priestory

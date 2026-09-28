@@ -9,6 +9,7 @@ export type NavItem = {
 /**
  * Homepage section links use /#… so they work from any page.
  * Dedicated content pages use real routes — never empty hash placeholders.
+ * Zverejňovanie menu is omitted until SMM publishes those documents here.
  */
 export const NAV_ITEMS: NavItem[] = [
   {
@@ -25,7 +26,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/#objekty-smm",
     children: [
       { label: "Objekty SMM", href: "/#objekty-smm" },
-      { label: "Prenájom priestorov", href: "/#volne-priestory" },
+      { label: "Prenájom priestorov", href: "/oznamy" },
     ],
   },
   {
@@ -45,16 +46,6 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Protokoly", href: "/ovs#protokoly" },
     ],
   },
-  {
-    label: "Zverejňovanie",
-    children: [
-      { label: "Zmluvy", href: "/#zmluvy" },
-      { label: "Faktúry a objednávky", href: "/#faktury-objednavky" },
-      { label: "Výročné správy", href: "/#vyrocne-spravy" },
-      { label: "Výberové konania", href: "/#vyberove-konania" },
-      { label: "Legislatíva", href: "/#legislativa" },
-    ],
-  },
   { label: "Kontakty", href: "/#kontakty" },
 ];
 
@@ -63,13 +54,6 @@ export const SECTION_ANCHORS = [
   "o-organizacii",
   "kontakty",
   "objekty-smm",
-  "prenajom-priestorov",
-  "zmluvy",
-  "faktury-objednavky",
-  "vyrocne-spravy",
-  "vyberove-konania",
-  "legislativa",
   "oznamy",
-  "volne-priestory",
   "kde-nas-najdete",
 ] as const;
