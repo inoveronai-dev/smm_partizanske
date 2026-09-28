@@ -373,7 +373,7 @@ export function ObjectsSection() {
       className="scroll-mt-24 bg-paper"
       aria-labelledby="objekty-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+      <div className="mx-auto max-w-6xl px-5 py-[4.5rem] sm:px-8 sm:py-[5.5rem] lg:px-10 lg:py-[6.75rem]">
         <div className="mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="section-label">Spravujeme</p>

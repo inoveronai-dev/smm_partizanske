@@ -57,7 +57,7 @@ export function SiteFooter() {
         className="relative z-0 scroll-mt-24 bg-paper"
         aria-labelledby="mapa-heading"
       >
-        <div className="mx-auto max-w-6xl px-5 pb-12 pt-6 sm:px-8 sm:pb-14 sm:pt-8 lg:px-10 lg:pb-16 lg:pt-10">
+        <div className="mx-auto max-w-6xl px-5 pb-14 pt-7 sm:px-8 sm:pb-16 sm:pt-9 lg:px-10 lg:pb-[4.5rem] lg:pt-11">
           <div className="mb-6 flex flex-col gap-2 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="section-label">Lokácia</p>
