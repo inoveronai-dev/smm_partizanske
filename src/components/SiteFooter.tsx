@@ -39,6 +39,13 @@ const OFFICE_HOURS = [
   },
 ] as const;
 
+const FOOTER_LINKS = [
+  { label: "Objekty", href: "/#objekty-smm" },
+  { label: "Oznamy", href: "/oznamy" },
+  { label: "OVS", href: "/ovs" },
+  { label: "Kontakt", href: "/#kontakty" },
+] as const;
+
 export function SiteFooter() {
   return (
     <footer>
@@ -134,24 +141,52 @@ export function SiteFooter() {
         </div>
       </section>
 
+      {/* Compact closing footer — quiet final line, no contact duplication */}
       <div className="border-t border-line bg-surface">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-          <div>
-            <p className="font-sans text-sm font-medium text-ink sm:text-base">
-              Správa majetku mesta, n.o., Partizánske
+        <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-serif text-xl font-semibold tracking-[0.02em] text-ink">
+              SMM{" "}
+              <span className="font-sans text-sm font-medium tracking-normal text-muted">
+                Partizánske
+              </span>
             </p>
-            <p className="mt-1 font-sans text-sm leading-relaxed text-muted">
-              IČO: 379 23 145 · DIČ: 2022092963 · IČ DPH: SK2022092963
-            </p>
+            <nav aria-label="Pätička" className="flex flex-wrap gap-x-5 gap-y-2">
+              {FOOTER_LINKS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="inline-flex min-h-11 items-center font-sans text-sm font-medium text-ink underline-offset-4 hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
-          <div className="flex items-center gap-6">
+
+          <p
+            aria-hidden
+            className="mx-auto mt-7 max-w-3xl text-center font-serif text-base font-semibold leading-snug tracking-[0.01em] text-ink/18 sm:mt-8 sm:text-lg lg:whitespace-nowrap lg:text-xl"
+          >
+            Správa majetku mesta, n.o., Partizánske
+          </p>
+
+          <div className="mt-6 flex flex-col gap-3 border-t border-line pt-4 sm:mt-7 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+            <div className="min-w-0">
+              <p className="font-sans text-sm text-muted">
+                © {new Date().getFullYear()} Správa majetku mesta, n.o.,
+                Partizánske
+              </p>
+              <p className="mt-1 font-sans text-xs leading-relaxed text-muted sm:text-sm">
+                IČO: 379 23 145 · DIČ: 2022092963 · IČ DPH: SK2022092963
+              </p>
+            </div>
             <Link
               href="/#top"
-              className="font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+              className="inline-flex min-h-11 shrink-0 items-center font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
             >
               Návrat hore
             </Link>
-            <p className="font-sans text-sm text-muted">© 2026</p>
           </div>
         </div>
       </div>
