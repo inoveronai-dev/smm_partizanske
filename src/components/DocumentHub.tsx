@@ -61,8 +61,9 @@ export function DocumentHub() {
             </h2>
           </div>
           <p className="max-w-sm font-sans text-base leading-relaxed text-muted">
-            Prehľad dostupných odkazov. Pre dokumenty, ktoré ešte nie sú
-            zverejnené, použite kontakt.
+            Dostupný je aktuálny oznam o voľných priestoroch. Ostatné dokumenty
+            zatiaľ nie sú na stránke zverejnené — môžete o ne požiadať
+            kontaktom.
           </p>
         </div>
 
@@ -91,16 +92,25 @@ export function DocumentHub() {
                   {item.label ?? "Otvoriť"}
                 </a>
               ) : (
-                <a
-                  href="#kontakty"
-                  className="shrink-0 font-sans text-base font-medium text-muted underline-offset-4 hover:text-[#2563eb] hover:underline"
-                >
-                  Kontakt
-                </a>
+                <span className="shrink-0 font-sans text-base font-medium text-muted">
+                  Zatiaľ nezverejnené
+                </span>
               )}
             </li>
           ))}
         </ul>
+
+        <div className="mt-6 flex flex-col gap-3 border border-line bg-surface px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p className="font-sans text-base leading-relaxed text-muted">
+            Potrebujete zmluvu, faktúru, výročnú správu alebo iný dokument?
+          </p>
+          <a
+            href="#kontakty"
+            className="inline-flex min-h-11 shrink-0 items-center justify-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+          >
+            Požiadať o dokument
+          </a>
+        </div>
       </div>
     </section>
   );

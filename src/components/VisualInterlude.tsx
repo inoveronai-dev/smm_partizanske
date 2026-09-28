@@ -9,7 +9,7 @@ export function VisualInterlude() {
       <img
         src="/hero-panorama.png"
         alt=""
-        className="absolute inset-0 h-full w-full object-cover object-[center_52%] opacity-70"
+        className="absolute inset-0 h-full w-full object-cover object-[center_68%] opacity-70"
         loading="lazy"
         decoding="async"
         aria-hidden

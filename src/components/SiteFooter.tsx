@@ -1,3 +1,5 @@
+import { MapPreview } from "@/components/MapPreview";
+
 const MAP_EMBED_SRC =
   "https://maps.google.com/maps?q=29.augusta%201191%2F51%20%2C%20958%2001%20Partiz%C3%A1nske&t=m&z=15&output=embed&iwloc=near";
 
@@ -68,14 +70,14 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-6 lg:items-end lg:text-right">
+          <div className="flex flex-col gap-7">
             <div>
               <p className="font-sans text-sm font-semibold uppercase tracking-[0.18em] text-[#93c5fd]">
                 E-mail
               </p>
               <a
                 href="mailto:sekretariat@smmpartizanske.sk"
-                className="mt-1 block font-serif text-xl font-semibold text-cream underline-offset-4 transition-colors hover:text-white hover:underline sm:text-2xl"
+                className="mt-2 block min-h-11 font-sans text-xl font-semibold leading-snug text-cream underline-offset-4 transition-colors hover:text-white hover:underline sm:text-2xl"
               >
                 sekretariat@smmpartizanske.sk
               </a>
@@ -86,16 +88,16 @@ export function SiteFooter() {
               </p>
               <a
                 href="tel:+421382851711"
-                className="mt-1 block font-serif text-xl font-semibold text-cream underline-offset-4 transition-colors hover:text-white hover:underline sm:text-2xl"
+                className="mt-2 inline-flex min-h-12 items-center font-sans text-xl font-semibold leading-snug text-cream underline-offset-4 transition-colors hover:text-white hover:underline sm:text-2xl"
               >
                 038 / 28 517 11
               </a>
             </div>
             <a
-              href="mailto:sekretariat@smmpartizanske.sk?subject=Spr%C3%A1va%20pre%20riadite%C4%BEa"
-              className="btn-on-dark inline-flex min-h-12 w-full items-center justify-center px-7 py-3.5 sm:w-auto"
+              href="mailto:sekretariat@smmpartizanske.sk"
+              className="btn-on-dark inline-flex min-h-12 w-full items-center justify-center px-7 py-3.5 sm:w-auto sm:self-start"
             >
-              Napíšte riaditeľovi
+              Napísať SMM
             </a>
           </div>
         </div>
@@ -126,19 +128,13 @@ export function SiteFooter() {
           </div>
 
           <div className="relative overflow-hidden border border-line bg-surface">
-            <div className="relative aspect-[16/10] w-full sm:aspect-[21/10] lg:aspect-[2.4/1] lg:min-h-[20rem]">
-              <iframe
-                title="Mapa — SMM Partizánske, 29. augusta 1191/51"
-                src={MAP_EMBED_SRC}
-                className="absolute inset-0 h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+            <MapPreview
+              embedSrc={MAP_EMBED_SRC}
+              title="Mapa — SMM Partizánske, 29. augusta 1191/51"
+            />
             <div className="flex flex-col gap-4 border-t border-line px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <div>
-                <p className="font-serif text-xl font-semibold text-ink">
+                <p className="font-sans text-xl font-semibold text-ink">
                   {OFFICE_ADDRESS.street}
                 </p>
                 <p className="font-sans text-base text-muted">
@@ -200,10 +196,10 @@ export function SiteFooter() {
       <div className="border-t border-line bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
           <div>
-            <p className="font-sans text-sm font-medium text-ink">
+            <p className="font-sans text-sm font-medium text-ink sm:text-base">
               Správa majetku mesta, n.o., Partizánske
             </p>
-            <p className="mt-1 font-sans text-xs text-muted">
+            <p className="mt-1 font-sans text-sm leading-relaxed text-muted">
               IČO: 379 23 145 · DIČ: 2022092963 · IČ DPH: SK2022092963
             </p>
           </div>
@@ -214,7 +210,7 @@ export function SiteFooter() {
             >
               Návrat hore
             </a>
-            <p className="font-sans text-sm text-muted">© 2025 / 2026</p>
+            <p className="font-sans text-sm text-muted">© 2026</p>
           </div>
         </div>
       </div>

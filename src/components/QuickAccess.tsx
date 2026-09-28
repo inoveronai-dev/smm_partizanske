@@ -4,27 +4,27 @@ type QuickLink = {
   href: string;
   title: string;
   description: string;
-  icon: "contracts" | "orders" | "spaces";
+  icon: "spaces" | "notices" | "contact";
 };
 
 const QUICK_LINKS: QuickLink[] = [
-  {
-    href: "#zmluvy",
-    title: "Zmluvy",
-    description: "Zverejnené zmluvy a dokumenty",
-    icon: "contracts",
-  },
-  {
-    href: "#faktury-objednavky",
-    title: "Faktúry a objednávky",
-    description: "Prehľad faktúr a objednávok",
-    icon: "orders",
-  },
   {
     href: "#volne-priestory",
     title: "Voľné nebytové priestory",
     description: "Aktuálna ponuka na prenájom",
     icon: "spaces",
+  },
+  {
+    href: "#oznamenia",
+    title: "Oznámenia",
+    description: "Aktuálne oznámenia a OVS",
+    icon: "notices",
+  },
+  {
+    href: "#kontakty",
+    title: "Kontakty",
+    description: "E-mail, telefón a stránkové dni",
+    icon: "contact",
   },
 ];
 
@@ -37,7 +37,24 @@ function QuickIcon({ name }: { name: QuickLink["icon"] }) {
   };
 
   switch (name) {
-    case "contracts":
+    case "spaces":
+      return (
+        <svg {...common}>
+          <path
+            d="M4 19.5V8.2L12 3.5l8 4.7V19.5H4Z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M10 19.5v-6h4v6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "notices":
       return (
         <svg {...common}>
           <path
@@ -53,35 +70,19 @@ function QuickIcon({ name }: { name: QuickLink["icon"] }) {
           />
         </svg>
       );
-    case "orders":
+    case "contact":
       return (
         <svg {...common}>
           <path
-            d="M5 7h14v12.5H5zM8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7"
+            d="M5 7.5h14v11H5z"
             stroke="currentColor"
             strokeWidth="1.5"
           />
           <path
-            d="M9 12.5h6M9 15.5h4"
+            d="M5 9.5 12 14l7-4.5"
             stroke="currentColor"
             strokeWidth="1.5"
             strokeLinecap="round"
-          />
-        </svg>
-      );
-    case "spaces":
-      return (
-        <svg {...common}>
-          <path
-            d="M4 19.5V8.2L12 3.5l8 4.7V19.5H4Z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M10 19.5v-6h4v6"
-            stroke="currentColor"
-            strokeWidth="1.5"
             strokeLinejoin="round"
           />
         </svg>

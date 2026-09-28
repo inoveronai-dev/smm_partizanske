@@ -12,19 +12,19 @@ export function AboutSection() {
       />
 
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
-        <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
-          <figure className="order-2 lg:order-1 lg:self-stretch">
-            <div className="h-full overflow-hidden bg-navy/5">
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+          <figure className="order-2 lg:order-1">
+            <div className="overflow-hidden bg-navy/5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/smm-hq-building.png"
                 alt="Sídlo Správy majetku mesta, n.o., Partizánske — Ulica 29. augusta"
-                className="aspect-[4/3] w-full object-cover object-[center_42%] sm:aspect-[5/4] lg:aspect-auto lg:h-full lg:min-h-[28rem]"
+                className="aspect-[4/3] w-full object-cover object-[center_58%] sm:aspect-[5/4] lg:aspect-[4/3] lg:max-h-[26rem]"
                 loading="lazy"
                 decoding="async"
               />
             </div>
-            <figcaption className="mt-4 border-l-[3px] border-[#2563eb] pl-4">
+            <figcaption className="mt-5 border-l-[3px] border-[#2563eb] pl-4">
               <span className="block font-serif text-lg font-semibold text-ink sm:text-xl">
                 Sídlo SMM Partizánske
               </span>
@@ -99,33 +99,11 @@ export function AboutSection() {
                 </p>
                 <p>
                   Organizácia pôsobí ako samostatný právny subjekt mesta
-                  Partizánske. Presné znenie zriaďovacích dokumentov a odkazy na
-                  záväzný právny rámec budú na stránke doplnené po oficiálnom
-                  potvrdení zo strany SMM.
+                  Partizánske a zabezpečuje správu zvereného mestského majetku.
                 </p>
               </div>
             </details>
           </div>
-        </div>
-
-        <div
-          id="spravna-rada"
-          className="scroll-mt-24 mt-14 border-t border-line pt-10"
-        >
-          <h3 className="font-serif text-2xl font-semibold text-ink">
-            Správna rada
-          </h3>
-          <p className="mt-3 max-w-3xl font-sans text-base leading-relaxed text-muted sm:text-lg">
-            Zoznam členov správnej rady a funkčné obdobia budú zverejnené na
-            tomto mieste po dodaní oficiálnych údajov od SMM. Nevymýšľame mená
-            ani funkcie.
-          </p>
-          <a
-            href="#kontakty"
-            className="mt-5 inline-flex min-h-11 items-center font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline"
-          >
-            Kontaktovať SMM
-          </a>
         </div>
       </div>
     </section>

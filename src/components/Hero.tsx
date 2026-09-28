@@ -57,7 +57,7 @@ function HeroCopy({ revealed }: { revealed: boolean }) {
   return (
     <div className="flex flex-col items-start text-left">
       <p
-        className={`font-sans text-xs font-bold tracking-[0.28em] text-[#93c5fd] sm:text-sm ${
+        className={`font-sans text-xs font-bold tracking-[0.28em] text-[#bfdbfe] sm:text-sm ${
           revealed ? "animate-hero-rise" : "opacity-0"
         }`}
         style={{ animationDelay: revealed ? "0.12s" : undefined }}

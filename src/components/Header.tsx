@@ -216,7 +216,7 @@ export function Header({ revealed = true }: HeaderProps) {
         <a
           href="#top"
           className="flex shrink-0 flex-col leading-none transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
-          aria-label="SMM Partizánske — domov"
+          aria-label="SMM Partizánske — Správa majetku mesta — domov"
         >
           <span
             className={`font-serif text-2xl font-bold tracking-[0.04em] sm:text-[1.65rem] ${
@@ -226,8 +226,15 @@ export function Header({ revealed = true }: HeaderProps) {
             SMM
           </span>
           <span
-            className={`mt-1 font-sans text-xs font-medium sm:text-sm ${
-              showSolid ? "text-muted" : "text-cream/75"
+            className={`mt-1 font-sans text-[0.7rem] font-semibold tracking-[0.04em] sm:text-xs ${
+              showSolid ? "text-ink" : "text-cream"
+            }`}
+          >
+            Správa majetku mesta
+          </span>
+          <span
+            className={`mt-0.5 font-sans text-[0.65rem] font-medium sm:text-xs ${
+              showSolid ? "text-muted" : "text-cream/80"
             }`}
           >
             Partizánske

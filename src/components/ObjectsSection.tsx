@@ -318,12 +318,12 @@ function ShowcasePlate({
       <img
         src={image}
         alt={alt}
-        className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] ${objectPosition}`}
+        className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] [filter:contrast(1.06)_saturate(0.92)_brightness(1.02)] ${objectPosition}`}
         loading="lazy"
         decoding="async"
       />
-      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 via-navy/25 to-transparent px-4 pb-4 pt-16">
-        <span className="block font-sans text-sm font-semibold tracking-wide text-cream sm:text-base">
+      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent px-4 pb-4 pt-12 sm:pt-14">
+        <span className="block font-sans text-sm font-semibold tracking-wide text-cream drop-shadow-sm sm:text-base">
           {label}
         </span>
       </span>
@@ -384,8 +384,8 @@ export function ObjectsSection() {
               Objekty SMM
             </h2>
             <p className="mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted">
-              Autentické fotografie mestských bytových a nebytových objektov v
-              správe SMM Partizánske.
+              Prehľad bytových a nebytových objektov, ktoré má v správe SMM
+              Partizánske.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -411,7 +411,7 @@ export function ObjectsSection() {
             image={SHOWCASE.large.image}
             alt={SHOWCASE.large.alt}
             label={SHOWCASE.large.label}
-            objectPosition="object-[center_35%]"
+            objectPosition="object-[center_55%]"
             className="aspect-[4/5] sm:aspect-[16/11] lg:col-span-8 lg:aspect-auto lg:min-h-[28rem] xl:min-h-[32rem]"
             onActivate={() =>
               openFromShowcase(SHOWCASE.large.category, SHOWCASE.large.id)

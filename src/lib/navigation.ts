@@ -9,6 +9,7 @@ export type NavItem = {
 /**
  * Every href must land on a visible section with real content or an honest
  * pending-content panel. Dodávatelia is intentionally absent until SMM provides it.
+ * Správna rada is absent until SMM supplies approved names and terms.
  */
 export const NAV_ITEMS: NavItem[] = [
   {
@@ -18,7 +19,6 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "O organizácii", href: "#o-organizacii" },
       { label: "Kontakty", href: "#kontakty" },
       { label: "Kde nás nájdete", href: "#kde-nas-najdete" },
-      { label: "Správna rada", href: "#spravna-rada" },
     ],
   },
   {
@@ -54,7 +54,6 @@ export const NAV_ITEMS: NavItem[] = [
 export const SECTION_ANCHORS = [
   "o-organizacii",
   "kontakty",
-  "spravna-rada",
   "objekty-smm",
   "prenajom-priestorov",
   "aktualne-ovs",
