@@ -251,6 +251,25 @@ body {
   animation: photo-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Calm continuous announcement ribbon — one visual loop of duplicated cards */
+@keyframes oznamy-ribbon-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.oznamy-ribbon-track {
+  animation: oznamy-ribbon-scroll 52s linear infinite;
+  will-change: transform;
+}
+
+.oznamy-ribbon-track.oznamy-ribbon-paused {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-splash-mark,
   .animate-splash-line,
@@ -261,6 +280,11 @@ body {
   .splash-overlay {
     animation: none !important;
     opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .oznamy-ribbon-track {
+    animation: none !important;
     transform: none !important;
   }
 

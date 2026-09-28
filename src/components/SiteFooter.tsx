@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MapPreview } from "@/components/MapPreview";
 
 const MAP_EMBED_SRC =
@@ -204,12 +205,12 @@ export function SiteFooter() {
             </p>
           </div>
           <div className="flex items-center gap-6">
-            <a
-              href="#top"
+            <Link
+              href="/#top"
               className="font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline"
             >
               Návrat hore
-            </a>
+            </Link>
             <p className="font-sans text-sm text-muted">© 2026</p>
           </div>
         </div>

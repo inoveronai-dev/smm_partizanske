@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
 import { NAV_ITEMS, type NavItem } from "@/lib/navigation";
 
 type HeaderProps = {
   revealed?: boolean;
+  /** Always use solid (light) header — for inner pages without a hero. */
+  solidAlways?: boolean;
 };
 
 function Chevron({ open }: { open?: boolean }) {
@@ -180,9 +183,9 @@ function MobileItem({
   );
 }
 
-export function Header({ revealed = true }: HeaderProps) {
+export function Header({ revealed = true, solidAlways = false }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [solid, setSolid] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -192,15 +195,16 @@ export function Header({ revealed = true }: HeaderProps) {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (solidAlways) return;
     const onScroll = () => {
-      setSolid(window.scrollY > 48 || menuOpen);
+      setScrolled(window.scrollY > 48 || menuOpen);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen]);
+  }, [menuOpen, solidAlways]);
 
-  const showSolid = solid || menuOpen;
+  const showSolid = solidAlways || scrolled || menuOpen;
 
   return (
     <header
@@ -213,8 +217,8 @@ export function Header({ revealed = true }: HeaderProps) {
       }`}
     >
       <div className="mx-auto flex min-h-16 max-w-7xl items-center gap-4 px-5 py-2.5 sm:min-h-[4.5rem] sm:px-8 lg:px-10">
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="flex shrink-0 flex-col leading-none transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
           aria-label="SMM Partizánske — Správa majetku mesta — domov"
         >
@@ -239,7 +243,7 @@ export function Header({ revealed = true }: HeaderProps) {
           >
             Partizánske
           </span>
-        </a>
+        </Link>
 
         <nav
           className="ml-auto hidden items-center gap-7 lg:flex"

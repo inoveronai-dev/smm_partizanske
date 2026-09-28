@@ -4,7 +4,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { DocumentHub } from "@/components/DocumentHub";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { NoticesSection } from "@/components/NoticesSection";
+import { NoticesCarousel } from "@/components/NoticesCarousel";
 import { ObjectsSection } from "@/components/ObjectsSection";
 import { QuickAccess } from "@/components/QuickAccess";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -22,7 +22,7 @@ export function HomeExperience() {
         <ObjectsSection />
         <AboutSection />
         <VisualInterlude />
-        <NoticesSection />
+        <NoticesCarousel />
         <DocumentHub />
         <SiteFooter />
       </main>

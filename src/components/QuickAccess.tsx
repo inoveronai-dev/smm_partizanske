@@ -15,9 +15,9 @@ const QUICK_LINKS: QuickLink[] = [
     icon: "spaces",
   },
   {
-    href: "#oznamenia",
-    title: "Oznámenia",
-    description: "Aktuálne oznámenia a OVS",
+    href: "#oznamy",
+    title: "Oznamy",
+    description: "Oznámenia a odkaz na OVS",
     icon: "notices",
   },
   {
