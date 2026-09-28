@@ -86,7 +86,7 @@ export function NoticesCarousel() {
       className="scroll-mt-24 bg-surface"
       aria-labelledby={labelId}
     >
-      <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+      <div className="mx-auto max-w-6xl px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-10 lg:pb-24 lg:pt-12">
         <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="section-label">Informácie</p>
