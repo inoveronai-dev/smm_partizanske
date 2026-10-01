@@ -64,7 +64,7 @@ function DesktopItem({
     return (
       <a
         href={item.href}
-        className={`font-sans text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${linkTone}`}
+        className={`font-sans text-sm font-semibold transition-colors duration-[180ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${linkTone}`}
       >
         {item.label}
       </a>
@@ -91,7 +91,7 @@ function DesktopItem({
     >
       <button
         type="button"
-        className={`inline-flex min-h-11 items-center gap-1.5 font-sans text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${linkTone}`}
+        className={`inline-flex min-h-11 items-center gap-1.5 font-sans text-sm font-semibold transition-colors duration-[180ms] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${linkTone}`}
         aria-expanded={open}
         aria-haspopup="menu"
         aria-controls={panelId}
@@ -115,7 +115,7 @@ function DesktopItem({
             key={child.href + child.label}
             href={child.href}
             role="menuitem"
-            className="block px-4 py-3 font-sans text-base tracking-wide text-ink transition-colors hover:bg-warm hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb]"
+            className="block px-4 py-3 font-sans text-base tracking-wide text-ink transition-colors duration-[180ms] hover:bg-warm hover:text-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb]"
             onClick={() => setOpen(false)}
           >
             {child.label}
@@ -140,7 +140,7 @@ function MobileItem({
     return (
       <a
         href={item.href}
-        className="py-3.5 font-sans text-base font-semibold text-ink transition-colors hover:text-[#2563eb]"
+        className="py-3.5 font-sans text-base font-semibold text-ink transition-colors duration-[180ms] hover:text-[#2563eb]"
         onClick={onNavigate}
       >
         {item.label}
@@ -171,7 +171,7 @@ function MobileItem({
             <a
               key={child.href + child.label}
               href={child.href}
-              className="py-2.5 font-sans text-base tracking-wide text-muted transition-colors hover:text-[#2563eb]"
+              className="py-2.5 font-sans text-base tracking-wide text-muted transition-colors duration-[180ms] hover:text-[#2563eb]"
               onClick={onNavigate}
             >
               {child.label}

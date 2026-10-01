@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/Reveal";
+
 export function AboutSection() {
   return (
     <section
@@ -13,7 +15,12 @@ export function AboutSection() {
 
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-[4.5rem] lg:px-10 lg:py-20">
         <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
-          <figure className="order-2 lg:order-1">
+          <Reveal
+            as="figure"
+            variant="photo"
+            delay={40}
+            className="order-2 lg:order-1"
+          >
             <div className="overflow-hidden bg-navy/5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -33,76 +40,83 @@ export function AboutSection() {
                 dní
               </span>
             </figcaption>
-          </figure>
+          </Reveal>
 
           <div className="order-1 flex flex-col justify-center lg:order-2">
-            <p className="section-label">Organizácia</p>
-            <h2
-              id="o-nas-heading"
-              className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl"
-            >
-              O nás
-            </h2>
-            <span className="mt-6 block h-0.5 w-16 bg-[#2563eb]" aria-hidden />
+            <Reveal variant="text">
+              <p className="section-label">Organizácia</p>
+              <h2
+                id="o-nas-heading"
+                className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl"
+              >
+                O nás
+              </h2>
+              <span
+                className="mt-6 block h-0.5 w-16 bg-[#2563eb]"
+                aria-hidden
+              />
+            </Reveal>
 
-            <p className="mt-6 font-sans text-lg leading-relaxed text-ink sm:text-xl">
-              Správa majetku mesta, n.o., Partizánske je nezisková organizácia
-              mesta so samostatnou právnou subjektivitou, založená k{" "}
-              <span className="font-semibold">9. 12. 2005</span>. Zabezpečuje
-              starostlivosť o mestský majetok a dostupnosť informácií pre
-              občanov.
-            </p>
+            <Reveal variant="support" delay={70} className="mt-6">
+              <p className="font-sans text-lg leading-relaxed text-ink sm:text-xl">
+                Správa majetku mesta, n.o., Partizánske je nezisková organizácia
+                mesta so samostatnou právnou subjektivitou, založená k{" "}
+                <span className="font-semibold">9. 12. 2005</span>. Zabezpečuje
+                starostlivosť o mestský majetok a dostupnosť informácií pre
+                občanov.
+              </p>
 
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
-              <div>
-                <h3 className="font-sans text-base font-bold text-[#2563eb]">
-                  Hlavná činnosť
-                </h3>
-                <ul className="mt-3 space-y-2.5 font-sans text-base leading-relaxed text-ink">
-                  <li className="border-l-[3px] border-[#2563eb] pl-3">
-                    Správa bytového fondu a nájomných vzťahov
-                  </li>
-                  <li className="border-l-[3px] border-[#2563eb] pl-3">
-                    Údržba a prevádzka zvereného majetku
-                  </li>
-                  <li className="border-l-[3px] border-[#2563eb] pl-3">
-                    Výstavba nájomných bytových domov
-                  </li>
-                </ul>
+              <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                <div>
+                  <h3 className="font-sans text-base font-bold text-[#2563eb]">
+                    Hlavná činnosť
+                  </h3>
+                  <ul className="mt-3 space-y-2.5 font-sans text-base leading-relaxed text-ink">
+                    <li className="border-l-[3px] border-[#2563eb] pl-3">
+                      Správa bytového fondu a nájomných vzťahov
+                    </li>
+                    <li className="border-l-[3px] border-[#2563eb] pl-3">
+                      Údržba a prevádzka zvereného majetku
+                    </li>
+                    <li className="border-l-[3px] border-[#2563eb] pl-3">
+                      Výstavba nájomných bytových domov
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-sans text-base font-bold text-[#2563eb]">
+                    Podnikateľská činnosť
+                  </h3>
+                  <ul className="mt-3 space-y-2.5 font-sans text-base leading-relaxed text-ink">
+                    <li className="border-l-[3px] border-line pl-3">
+                      Správa nehnuteľností a súvisiacich služieb
+                    </li>
+                    <li className="border-l-[3px] border-line pl-3">
+                      Výkon práv a povinností mesta Partizánske voči nájomcom a
+                      partnerom
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              <div>
-                <h3 className="font-sans text-base font-bold text-[#2563eb]">
-                  Podnikateľská činnosť
-                </h3>
-                <ul className="mt-3 space-y-2.5 font-sans text-base leading-relaxed text-ink">
-                  <li className="border-l-[3px] border-line pl-3">
-                    Správa nehnuteľností a súvisiacich služieb
-                  </li>
-                  <li className="border-l-[3px] border-line pl-3">
-                    Výkon práv a povinností mesta Partizánske voči nájomcom a
-                    partnerom
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <details className="mt-8 border-t border-line pt-5">
-              <summary className="cursor-pointer font-sans text-base font-semibold text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]">
-                Podrobnejšie o organizácii
-              </summary>
-              <div className="mt-4 space-y-4 font-sans text-base leading-relaxed text-muted">
-                <p>
-                  Od svojho vzniku zabezpečuje Správa majetku mesta
-                  starostlivosť o mestský majetok s dôrazom na transparentnosť,
-                  spoľahlivosť a dostupnosť služieb pre občanov.
-                </p>
-                <p>
-                  Organizácia pôsobí ako samostatný právny subjekt mesta
-                  Partizánske a zabezpečuje správu zvereného mestského majetku.
-                </p>
-              </div>
-            </details>
+              <details className="mt-8 border-t border-line pt-5">
+                <summary className="cursor-pointer font-sans text-base font-semibold text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]">
+                  Podrobnejšie o organizácii
+                </summary>
+                <div className="mt-4 space-y-4 font-sans text-base leading-relaxed text-muted">
+                  <p>
+                    Od svojho vzniku zabezpečuje Správa majetku mesta
+                    starostlivosť o mestský majetok s dôrazom na transparentnosť,
+                    spoľahlivosť a dostupnosť služieb pre občanov.
+                  </p>
+                  <p>
+                    Organizácia pôsobí ako samostatný právny subjekt mesta
+                    Partizánske a zabezpečuje správu zvereného mestského majetku.
+                  </p>
+                </div>
+              </details>
+            </Reveal>
           </div>
         </div>
       </div>

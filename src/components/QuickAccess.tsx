@@ -119,9 +119,9 @@ export function QuickAccess({ revealed = true }: QuickAccessProps) {
               {...(link.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="group flex min-h-[5.5rem] items-center gap-4 px-5 py-5 transition-colors hover:bg-warm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb] sm:min-h-[6.5rem] sm:px-6 sm:py-7 lg:px-8"
+              className="group flex min-h-[5.5rem] items-center gap-4 px-5 py-5 transition-colors duration-[180ms] hover:bg-warm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb] sm:min-h-[6.5rem] sm:px-6 sm:py-7 lg:px-8"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center text-[#2563eb] transition-colors group-hover:text-navy">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center text-[#2563eb] transition-colors duration-[180ms] group-hover:text-navy">
                 <QuickIcon name={link.icon} />
               </span>
               <span className="min-w-0">

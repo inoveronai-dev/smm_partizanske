@@ -84,7 +84,7 @@ function ContactPanel() {
           </p>
           <a
             href="mailto:sekretariat@smmpartizanske.sk"
-            className="mt-2 block min-h-11 font-sans text-lg font-semibold leading-snug text-ink underline-offset-4 transition-colors hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:text-xl"
+            className="mt-2 block min-h-11 font-sans text-lg font-semibold leading-snug text-ink underline-offset-4 transition-colors duration-[180ms] hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:text-xl"
           >
             sekretariat@smmpartizanske.sk
           </a>
@@ -95,7 +95,7 @@ function ContactPanel() {
           </p>
           <a
             href="tel:+421382851711"
-            className="mt-2 inline-flex min-h-12 items-center font-sans text-lg font-semibold leading-snug text-ink underline-offset-4 transition-colors hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:text-xl"
+            className="mt-2 inline-flex min-h-12 items-center font-sans text-lg font-semibold leading-snug text-ink underline-offset-4 transition-colors duration-[180ms] hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:text-xl"
           >
             038 / 28 517 11
           </a>

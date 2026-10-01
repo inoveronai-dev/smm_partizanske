@@ -26,7 +26,7 @@ export default function OznamyPage() {
                 rel="noopener noreferrer"
                 className="group flex min-h-[4.5rem] flex-col justify-center gap-1.5 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
               >
-                <span className="font-sans text-lg font-medium text-ink transition-colors group-hover:text-[#2563eb] sm:text-xl">
+                <span className="font-sans text-lg font-medium text-ink transition-colors duration-[180ms] group-hover:text-[#2563eb] sm:text-xl">
                   {item.title}
                 </span>
                 <time className="shrink-0 font-sans text-base font-semibold tabular-nums text-muted sm:text-lg">

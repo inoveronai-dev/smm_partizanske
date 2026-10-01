@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useMemo, useState } from "react";
+import { Reveal } from "@/components/Reveal";
 import {
   BUILDINGS,
   CATEGORY_META,
@@ -36,7 +37,7 @@ const SHOWCASE = {
 } as const;
 
 const buildingCardClassName =
-  "group flex w-full flex-col overflow-hidden border border-line bg-surface text-left transition-[border-color] duration-200 hover:border-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]";
+  "property-card group flex w-full flex-col overflow-hidden border border-line bg-surface text-left";
 
 function BuildingCardContent({ building }: { building: Building }) {
   return (
@@ -46,7 +47,7 @@ function BuildingCardContent({ building }: { building: Building }) {
         <img
           src={building.image}
           alt={building.imageAlt}
-          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
         />
@@ -154,7 +155,7 @@ function CategoryGalleryModal({
           <button
             type="button"
             aria-label="Zavrieť"
-            className="flex h-11 w-11 shrink-0 items-center justify-center border border-line bg-surface text-2xl leading-none text-ink transition-colors hover:border-[#2563eb] hover:text-[#2563eb]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center border border-line bg-surface text-2xl leading-none text-ink transition-colors duration-[180ms] hover:border-[#2563eb] hover:text-[#2563eb]"
             onClick={onClose}
           >
             <span aria-hidden>×</span>
@@ -164,12 +165,18 @@ function CategoryGalleryModal({
         <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-8">
           {buildings.length > 0 ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {buildings.map((building) => (
-                <BuildingCard
+              {buildings.map((building, index) => (
+                <Reveal
                   key={building.id}
-                  building={building}
-                  onOpenDetail={onOpenDetail}
-                />
+                  variant="card"
+                  playWhenVisible
+                  delay={Math.min(index * 60, 240)}
+                >
+                  <BuildingCard
+                    building={building}
+                    onOpenDetail={onOpenDetail}
+                  />
+                </Reveal>
               ))}
             </div>
           ) : (
@@ -256,7 +263,7 @@ function BuildingDetailModal({
           <div className="flex flex-wrap gap-3">
             <button
               type="button"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#2563eb] px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-navy disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#2563eb] px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-surface transition-colors duration-[180ms] hover:bg-navy disabled:cursor-not-allowed disabled:opacity-40"
               disabled={!hasPrev}
               onClick={() => hasPrev && onSelect(buildings[index - 1])}
             >
@@ -264,7 +271,7 @@ function BuildingDetailModal({
             </button>
             <button
               type="button"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm border border-line bg-surface px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:border-[#2563eb] hover:text-[#2563eb] disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex min-h-11 items-center justify-center rounded-sm border border-line bg-surface px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors duration-[180ms] hover:border-[#2563eb] hover:text-[#2563eb] disabled:cursor-not-allowed disabled:opacity-40"
               disabled={!hasNext}
               onClick={() => hasNext && onSelect(buildings[index + 1])}
             >
@@ -272,7 +279,7 @@ function BuildingDetailModal({
             </button>
             <a
               href="#kontakty"
-              className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2563eb]/30 bg-royal-soft px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb] transition-colors hover:bg-[#2563eb] hover:text-surface"
+              className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2563eb]/30 bg-royal-soft px-4 py-3 font-sans text-xs font-bold uppercase tracking-[0.16em] text-[#2563eb] transition-colors duration-[180ms] hover:bg-[#2563eb] hover:text-surface"
               onClick={onClose}
             >
               Kontakt
@@ -283,7 +290,7 @@ function BuildingDetailModal({
         <button
           type="button"
           aria-label="Zavrieť detail"
-          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center border border-line bg-surface text-xl leading-none text-ink transition-colors hover:border-[#2563eb] hover:text-[#2563eb]"
+          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center border border-line bg-surface text-xl leading-none text-ink transition-colors duration-[180ms] hover:border-[#2563eb] hover:text-[#2563eb]"
           onClick={onClose}
         >
           <span aria-hidden>×</span>
@@ -300,6 +307,7 @@ function ShowcasePlate({
   onActivate,
   className,
   objectPosition = "object-center",
+  delay = 0,
 }: {
   image: string;
   alt: string;
@@ -307,27 +315,30 @@ function ShowcasePlate({
   onActivate: () => void;
   className?: string;
   objectPosition?: string;
+  delay?: number;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onActivate}
-      className={`group relative block w-full overflow-hidden bg-warm text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] ${className ?? ""}`}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={image}
-        alt={alt}
-        className={`h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] [filter:contrast(1.06)_saturate(0.92)_brightness(1.02)] ${objectPosition}`}
-        loading="lazy"
-        decoding="async"
-      />
-      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent px-4 pb-4 pt-12 sm:pt-14">
-        <span className="block font-sans text-sm font-semibold tracking-wide text-cream drop-shadow-sm sm:text-base">
-          {label}
+    <Reveal variant="photo" delay={delay} className={className}>
+      <button
+        type="button"
+        onClick={onActivate}
+        className="property-card group relative block h-full w-full overflow-hidden border border-transparent bg-warm text-left"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image}
+          alt={alt}
+          className={`h-full w-full object-cover [filter:contrast(1.06)_saturate(0.92)_brightness(1.02)] ${objectPosition}`}
+          loading="lazy"
+          decoding="async"
+        />
+        <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent px-4 pb-4 pt-12 sm:pt-14">
+          <span className="block font-sans text-sm font-semibold tracking-wide text-cream drop-shadow-sm sm:text-base">
+            {label}
+          </span>
         </span>
-      </span>
-    </button>
+      </button>
+    </Reveal>
   );
 }
 
@@ -376,19 +387,27 @@ export function ObjectsSection() {
       <div className="mx-auto max-w-6xl px-5 py-[4.5rem] sm:px-8 sm:py-[5.5rem] lg:px-10 lg:py-[6.75rem]">
         <div className="mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <p className="section-label">Spravujeme</p>
-            <h2
-              id="objekty-heading"
-              className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem]"
-            >
-              Objekty SMM
-            </h2>
-            <p className="mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted">
-              Prehľad bytových a nebytových objektov, ktoré má v správe SMM
-              Partizánske.
-            </p>
+            <Reveal variant="text">
+              <p className="section-label">Spravujeme</p>
+              <h2
+                id="objekty-heading"
+                className="section-heading mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem]"
+              >
+                Objekty SMM
+              </h2>
+            </Reveal>
+            <Reveal variant="support" delay={70}>
+              <p className="mt-4 max-w-xl font-sans text-lg leading-relaxed text-muted">
+                Prehľad bytových a nebytových objektov, ktoré má v správe SMM
+                Partizánske.
+              </p>
+            </Reveal>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <Reveal
+            variant="support"
+            delay={90}
+            className="flex flex-col gap-3 sm:flex-row"
+          >
             {CATEGORIES.map((key) => (
               <button
                 key={key}
@@ -399,7 +418,7 @@ export function ObjectsSection() {
                 {CATEGORY_META[key].title}
               </button>
             ))}
-          </div>
+          </Reveal>
         </div>
 
         {/* Asymmetric editorial photo composition — ~2/3 + two stacked supports */}
@@ -412,6 +431,7 @@ export function ObjectsSection() {
             alt={SHOWCASE.large.alt}
             label={SHOWCASE.large.label}
             objectPosition="object-[center_55%]"
+            delay={0}
             className="aspect-[4/5] sm:aspect-[16/11] lg:col-span-8 lg:aspect-auto lg:min-h-[28rem] xl:min-h-[32rem]"
             onActivate={() =>
               openFromShowcase(SHOWCASE.large.category, SHOWCASE.large.id)
@@ -422,6 +442,7 @@ export function ObjectsSection() {
               image={SHOWCASE.top.image}
               alt={SHOWCASE.top.alt}
               label={SHOWCASE.top.label}
+              delay={60}
               className="aspect-[16/11] lg:aspect-auto lg:min-h-[13.5rem] xl:min-h-[15.25rem]"
               onActivate={() =>
                 openFromShowcase(SHOWCASE.top.category, SHOWCASE.top.id)
@@ -432,6 +453,7 @@ export function ObjectsSection() {
               alt={SHOWCASE.bottom.alt}
               label={SHOWCASE.bottom.label}
               objectPosition="object-[center_40%]"
+              delay={120}
               className="aspect-[16/11] lg:aspect-auto lg:min-h-[13.5rem] xl:min-h-[15.25rem]"
               onActivate={() =>
                 openFromShowcase(

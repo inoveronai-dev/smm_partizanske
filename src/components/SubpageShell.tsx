@@ -33,7 +33,7 @@ export function SubpageShell({
             <p className="mt-6">
               <Link
                 href="/"
-                className="font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                className="font-sans text-base font-semibold text-[#2563eb] underline-offset-4 transition-colors duration-[180ms] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
               >
                 ← Späť na úvod
               </Link>

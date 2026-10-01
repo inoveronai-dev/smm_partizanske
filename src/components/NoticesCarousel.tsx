@@ -2,21 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
+import { Reveal, usePrefersReducedMotion } from "@/components/Reveal";
 import { NOTICES } from "@/lib/notices";
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  return reduced;
-}
 
 function NoticeCard({
   date,
@@ -51,7 +38,7 @@ function NoticeCard({
         rel="noopener noreferrer"
         tabIndex={interactive ? undefined : -1}
         aria-hidden={interactive ? undefined : true}
-        className="mt-4 inline-flex min-h-10 w-fit items-center font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+        className="mt-4 inline-flex min-h-10 w-fit items-center font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 transition-colors duration-[180ms] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
       >
         Otvoriť oznam
       </a>
@@ -88,7 +75,7 @@ export function NoticesCarousel() {
     >
       <div className="mx-auto max-w-6xl px-5 pb-[4.25rem] pt-9 sm:px-8 sm:pb-[5.25rem] sm:pt-11 lg:px-10 lg:pb-[6.5rem] lg:pt-14">
         <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-xl">
+          <Reveal variant="text" className="max-w-xl">
             <p className="section-label">Informácie</p>
             <h2
               id={labelId}
@@ -97,22 +84,26 @@ export function NoticesCarousel() {
               Oznamy
             </h2>
             <span className="mt-3 block h-0.5 w-14 bg-[#2563eb]" aria-hidden />
-          </div>
+          </Reveal>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <Reveal
+            variant="support"
+            delay={70}
+            className="flex flex-wrap items-center gap-x-6 gap-y-2"
+          >
             <Link
               href="/oznamy"
-              className="font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+              className="font-sans text-base font-semibold text-[#2563eb] underline-offset-4 transition-colors duration-[180ms] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
             >
               Všetky oznamy
             </Link>
             <Link
               href="/ovs"
-              className="font-sans text-base font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+              className="font-sans text-base font-semibold text-[#2563eb] underline-offset-4 transition-colors duration-[180ms] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
             >
               Obchodné verejné súťaže
             </Link>
-          </div>
+          </Reveal>
         </div>
 
         {reducedMotion ? (

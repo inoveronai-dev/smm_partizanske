@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BlueHourBand } from "@/components/BlueHourBand";
 import { MapPreview } from "@/components/MapPreview";
+import { Reveal } from "@/components/Reveal";
 
 const MAP_EMBED_SRC =
   "https://maps.google.com/maps?q=29.augusta%201191%2F51%20%2C%20958%2001%20Partiz%C3%A1nske&t=m&z=15&output=embed&iwloc=near";
@@ -59,7 +60,7 @@ export function SiteFooter() {
       >
         <div className="mx-auto max-w-6xl px-5 pb-14 pt-7 sm:px-8 sm:pb-16 sm:pt-9 lg:px-10 lg:pb-[4.5rem] lg:pt-11">
           <div className="mb-6 flex flex-col gap-2 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+            <Reveal variant="text">
               <p className="section-label">Lokácia</p>
               <h2
                 id="mapa-heading"
@@ -67,12 +68,14 @@ export function SiteFooter() {
               >
                 Kde nás nájdete
               </h2>
-            </div>
-            <p className="font-sans text-base text-muted sm:text-right">
-              {OFFICE_ADDRESS.street}
-              <br />
-              {OFFICE_ADDRESS.city}
-            </p>
+            </Reveal>
+            <Reveal variant="support" delay={70}>
+              <p className="font-sans text-base text-muted sm:text-right">
+                {OFFICE_ADDRESS.street}
+                <br />
+                {OFFICE_ADDRESS.city}
+              </p>
+            </Reveal>
           </div>
 
           <div className="relative overflow-hidden border border-line bg-surface">
@@ -93,7 +96,7 @@ export function SiteFooter() {
                 href={MAP_EXTERNAL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center rounded-sm bg-[#2563eb] px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                className="inline-flex min-h-12 items-center justify-center rounded-sm bg-[#2563eb] px-6 py-3.5 text-center font-sans text-sm font-bold uppercase tracking-[0.16em] text-surface transition-colors duration-[180ms] hover:bg-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
               >
                 Navigovať
               </a>
@@ -156,7 +159,7 @@ export function SiteFooter() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex min-h-11 items-center font-sans text-sm font-medium text-ink underline-offset-4 hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                  className="inline-flex min-h-11 items-center font-sans text-sm font-medium text-ink underline-offset-4 transition-colors duration-[180ms] hover:text-[#2563eb] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
                 >
                   {item.label}
                 </Link>
@@ -183,7 +186,7 @@ export function SiteFooter() {
             </div>
             <Link
               href="/#top"
-              className="inline-flex min-h-11 shrink-0 items-center font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+              className="inline-flex min-h-11 shrink-0 items-center font-sans text-sm font-semibold text-[#2563eb] underline-offset-4 transition-colors duration-[180ms] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
             >
               Návrat hore
             </Link>
