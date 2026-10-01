@@ -17,8 +17,8 @@ export function Hero({ revealed = true }: HeroProps) {
         <img
           src="/hero-panorama.png"
           alt="Panoráma Partizánskeho"
-          className={`absolute inset-0 h-full w-full object-cover object-[center_40%] transition-transform duration-[1.6s] ease-out ${
-            revealed ? "scale-100" : "scale-105"
+          className={`absolute inset-0 h-full w-full object-cover object-[center_40%] transition-transform duration-[1.8s] ease-out ${
+            revealed ? "scale-100" : "scale-[1.03]"
           }`}
           fetchPriority="high"
           decoding="async"
@@ -60,7 +60,7 @@ function HeroCopy({ revealed }: { revealed: boolean }) {
         className={`font-sans text-xs font-bold tracking-[0.28em] text-[#bfdbfe] sm:text-sm ${
           revealed ? "animate-hero-rise" : "opacity-0"
         }`}
-        style={{ animationDelay: revealed ? "0.12s" : undefined }}
+        style={{ animationDelay: revealed ? "0ms" : undefined }}
       >
         SPRÁVA MAJETKU MESTA
       </p>
@@ -69,7 +69,7 @@ function HeroCopy({ revealed }: { revealed: boolean }) {
         className={`mt-4 font-serif text-[clamp(2.75rem,8vw,5.5rem)] font-semibold leading-[0.95] tracking-[0.01em] text-cream ${
           revealed ? "animate-hero-rise" : "opacity-0"
         }`}
-        style={{ animationDelay: revealed ? "0.26s" : undefined }}
+        style={{ animationDelay: revealed ? "70ms" : undefined }}
       >
         Partizánske
       </h1>
@@ -78,7 +78,7 @@ function HeroCopy({ revealed }: { revealed: boolean }) {
         className={`mt-5 block h-0.5 w-16 origin-left bg-[#2563eb] ${
           revealed ? "animate-divider-draw" : "opacity-0"
         }`}
-        style={{ animationDelay: revealed ? "0.4s" : undefined }}
+        style={{ animationDelay: revealed ? "140ms" : undefined }}
         aria-hidden
       />
 
@@ -86,7 +86,7 @@ function HeroCopy({ revealed }: { revealed: boolean }) {
         className={`mt-6 max-w-md font-sans text-base leading-relaxed text-cream/90 sm:text-lg ${
           revealed ? "animate-hero-rise" : "opacity-0"
         }`}
-        style={{ animationDelay: revealed ? "0.48s" : undefined }}
+        style={{ animationDelay: revealed ? "160ms" : undefined }}
       >
         Spravujeme mestský bytový a nebytový majetok — objekty, dokumenty a
         kontakty na jednom mieste.
@@ -96,7 +96,7 @@ function HeroCopy({ revealed }: { revealed: boolean }) {
         className={`mt-8 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap ${
           revealed ? "animate-hero-rise" : "opacity-0"
         }`}
-        style={{ animationDelay: revealed ? "0.58s" : undefined }}
+        style={{ animationDelay: revealed ? "240ms" : undefined }}
       >
         <a
           href="#objekty-smm"

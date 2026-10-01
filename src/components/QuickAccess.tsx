@@ -105,21 +105,21 @@ export function QuickAccess({ revealed = true }: QuickAccessProps) {
       aria-label="Rýchly prístup"
       className="relative z-20 -mt-14 px-0 sm:-mt-16 lg:-mt-20"
     >
-      <div
-        className={`mx-auto max-w-6xl border-y border-line bg-surface lg:border lg:border-line ${
-          revealed ? "animate-hero-rise" : "opacity-0"
-        }`}
-        style={{ animationDelay: revealed ? "0.7s" : undefined }}
-      >
+      <div className="mx-auto max-w-6xl border-y border-line bg-surface lg:border lg:border-line">
         <div className="grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {QUICK_LINKS.map((link) => (
+          {QUICK_LINKS.map((link, index) => (
             <a
               key={link.href + link.title}
               href={link.href}
               {...(link.external
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="group flex min-h-[5.5rem] items-center gap-4 px-5 py-5 transition-colors duration-[180ms] hover:bg-warm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb] sm:min-h-[6.5rem] sm:px-6 sm:py-7 lg:px-8"
+              className={`group flex min-h-[5.5rem] items-center gap-4 px-5 py-5 transition-[background-color,transform,box-shadow] duration-[180ms] hover:bg-warm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2563eb] sm:min-h-[6.5rem] sm:px-6 sm:py-7 lg:px-8 ${
+                revealed ? "animate-hero-rise" : "opacity-0"
+              }`}
+              style={{
+                animationDelay: revealed ? `${320 + index * 70}ms` : undefined,
+              }}
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center text-[#2563eb] transition-colors duration-[180ms] group-hover:text-navy">
                 <QuickIcon name={link.icon} />
